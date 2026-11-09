@@ -68,6 +68,7 @@ export default function App() {
   const [items, setItems] = useState([]);
   const [aviso, setAviso] = useState(null);
   const carritoCargado = useRef(false);
+  const ultimoGuardado = useRef(''); // carrito tal como está en db.json (JSON)
   const temporizadorAviso = useRef(null);
 
   async function recargarCatalogo() {
@@ -94,6 +95,7 @@ export default function App() {
     carritosService
       .obtener(usuario.id)
       .then((guardado) => {
+        ultimoGuardado.current = JSON.stringify(guardado);
         setItems((actual) => unirCarritos(guardado, actual));
         carritoCargado.current = true;
       })
@@ -101,8 +103,14 @@ export default function App() {
   }, [usuario?.id]);
 
   // Cada cambio del carrito de un usuario con sesión se guarda en db.json.
+  // Solo se escribe si el carrito cambió: así recargar la página no modifica db.json
+  // (evita un loop de recargas si algún servidor recarga al cambiar ese archivo).
   useEffect(() => {
-    if (usuario && carritoCargado.current) carritosService.guardar(usuario.id, items).catch(() => {});
+    if (!usuario || !carritoCargado.current) return;
+    const json = JSON.stringify(items);
+    if (json === ultimoGuardado.current) return;
+    ultimoGuardado.current = json;
+    carritosService.guardar(usuario.id, items).catch(() => {});
   }, [items]);
 
   function mostrarAviso(mensaje, tipo = 'exito') {
