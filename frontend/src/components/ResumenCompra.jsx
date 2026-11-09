@@ -1,6 +1,5 @@
 import { formatearPrecio } from '../utils/formato';
 
-/** Resumen de montos de una compra: subtotal, envío y total. */
 export default function ResumenCompra({ subtotal, envio = 0, children }) {
   return (
     <div className="tarjeta p-5">

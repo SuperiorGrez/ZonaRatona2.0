@@ -3,7 +3,6 @@ import CampoFormulario from './CampoFormulario';
 import { validarCategoria, hayErrores } from '../utils/validaciones';
 import { manejarCambio } from '../utils/formularios';
 
-/** Formulario para crear o editar una categoría. */
 export default function FormularioCategoria({ inicial, onGuardar, onCancelar, textoBoton = 'Guardar categoría' }) {
   const [valores, setValores] = useState({
     nombre: inicial?.nombre || '',

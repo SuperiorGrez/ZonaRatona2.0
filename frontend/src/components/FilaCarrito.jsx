@@ -3,7 +3,6 @@ import ImagenProducto from './ImagenProducto';
 import SelectorCantidad from './SelectorCantidad';
 import { formatearPrecio } from '../utils/formato';
 
-/** Fila editable del carrito: cantidad, subtotal y botón para quitar. */
 export default function FilaCarrito({ item, maximo, onCambiarCantidad, onQuitar }) {
   const { producto } = item;
   return (

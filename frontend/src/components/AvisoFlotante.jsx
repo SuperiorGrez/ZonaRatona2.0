@@ -1,4 +1,3 @@
-/** Aviso flotante (toast) en la esquina inferior. Solo aparece si hay aviso. */
 export default function AvisoFlotante({ aviso }) {
   if (!aviso) return null;
   const color = aviso.tipo === 'alerta' ? 'bg-amber-500 text-negro' : 'bg-green-600 text-white';

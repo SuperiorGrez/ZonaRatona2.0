@@ -4,10 +4,6 @@ import TarjetaCategoria from '../../components/TarjetaCategoria';
 import ListaProductos from '../../components/ListaProductos';
 import productosService from '../../services/productosService';
 
-/**
- * Vista de categorías. Sin id muestra todas las categorías con sus productos;
- * con id (/categorias/:id) muestra solo los productos de esa categoría.
- */
 export default function Categorias({ productos, categorias, carrito }) {
   const { id } = useParams();
 

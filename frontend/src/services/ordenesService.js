@@ -2,7 +2,6 @@ import { api } from './api';
 import productosService from './productosService';
 
 export const COSTO_ENVIO = 3990;
-/** Tarjeta de prueba que el "banco" siempre rechaza (para simular un pago fallido). */
 export const SUFIJO_TARJETA_RECHAZADA = '0002';
 
 const ordenesService = {
@@ -14,10 +13,6 @@ const ordenesService = {
 
   actualizarEstado: (id, estado) => api(`/ordenes/${id}`, 'PATCH', { estado }),
 
-  /**
-   * Simula el procesamiento de un pago y registra la orden (pagada o rechazada).
-   * @param compra { detalle, cliente, direccion, entrega, numeroTarjeta, usuarioId }
-   */
   async procesarPago({ detalle, cliente, direccion, entrega, numeroTarjeta, usuarioId = null }) {
     const tarjeta = String(numeroTarjeta || '').replace(/\s/g, '');
     let motivo = '';
@@ -57,7 +52,6 @@ const ordenesService = {
       items,
       total: subtotal + costoEnvio,
     });
-    // El número de orden usa el id que asignó json-server.
     const completa = await api(`/ordenes/${orden.id}`, 'PATCH', {
       numero: ahora.toISOString().slice(0, 10).replace(/-/g, '') + String(orden.id).padStart(3, '0'),
       codigo: 'ORDER' + String(orden.id).padStart(5, '0'),
@@ -67,7 +61,6 @@ const ordenesService = {
     return completa;
   },
 
-  /** Métricas para el dashboard (sobre una lista ya cargada). */
   resumen(ordenes) {
     const pagadas = ordenes.filter((o) => o.estado !== 'rechazada');
     return {

@@ -1,4 +1,3 @@
-/** Título de página con subtítulo opcional y espacio para acciones. */
 export default function EncabezadoPagina({ titulo, subtitulo, children }) {
   return (
     <div className="mb-6 flex flex-wrap items-center justify-between gap-3">

@@ -4,7 +4,6 @@ import EstadoVacio from '../../components/EstadoVacio';
 import FormularioCategoria from '../../components/FormularioCategoria';
 import categoriasService from '../../services/categoriasService';
 
-/** Vista "Nueva categoría" y "Editar categoría". */
 export default function CategoriaFormulario({ categorias, onCambio }) {
   const { id } = useParams();
   const navegar = useNavigate();

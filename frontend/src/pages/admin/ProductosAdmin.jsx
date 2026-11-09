@@ -14,10 +14,6 @@ function colorStock(p) {
   return 'bg-green-600';
 }
 
-/**
- * Tabla de productos (mostrar productos) con acciones de ver, editar y eliminar.
- * onCambio: recarga el catálogo en App después de modificar algo.
- */
 export default function ProductosAdmin({ productos, categorias, soloCriticos = false, onCambio }) {
   const [texto, setTexto] = useState('');
   const [mensaje, setMensaje] = useState('');

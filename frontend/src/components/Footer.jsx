@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 
-/** Pie de página de la tienda. */
 export default function Footer() {
   const enlace = 'text-gray-400 underline hover:text-amarillo';
   return (

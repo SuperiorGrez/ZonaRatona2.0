@@ -28,9 +28,7 @@ const DIAPOSITIVAS = [
   },
 ];
 
-/** Página principal: banner, categorías, destacados y ofertas. */
 export default function Home({ productos, categorias, carrito }) {
-
   const destacados = productos.filter((p) => p.activo && p.stock > 0 && p.categoriaId === 1).slice(0, 5);
   const ofertas = productosService.enOferta(productos).slice(0, 5);
 

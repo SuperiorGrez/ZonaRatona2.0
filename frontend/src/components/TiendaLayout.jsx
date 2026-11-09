@@ -2,7 +2,6 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import AvisoFlotante from './AvisoFlotante';
 
-/** Estructura común de las vistas públicas: navbar + contenido (children) + footer. */
 export default function TiendaLayout({ children, usuario, categorias, carrito, aviso, onCerrarSesion }) {
   return (
     <div className="fondo-gamer flex min-h-screen flex-col">

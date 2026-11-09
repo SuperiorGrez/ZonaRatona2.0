@@ -1,8 +1,3 @@
-/**
- * Lógica pura del carrito de compras (sin React ni localStorage) para que sea
- * fácil de probar. El carrito es un arreglo de { productoId, cantidad }.
- */
-
 export const LIMITE_POR_DEFECTO = 3;
 
 export function precioFinal(producto) {
@@ -15,7 +10,6 @@ export function cantidadEnCarrito(carrito, productoId) {
   return item ? item.cantidad : 0;
 }
 
-/** Máximo de unidades que se pueden llevar de un producto (stock y límite de categoría). */
 export function maximoPermitido(producto, categoria) {
   if (!producto || !producto.activo || producto.stock <= 0) return 0;
   const limite = categoria && categoria.limitePorProducto ? categoria.limitePorProducto : LIMITE_POR_DEFECTO;
@@ -45,7 +39,6 @@ export function quitarItem(carrito, productoId) {
   return carrito.filter((i) => i.productoId !== productoId);
 }
 
-/** Une el carrito con los productos para obtener nombre, precio y subtotal. */
 export function detalleCarrito(carrito, productos) {
   return carrito
     .map((item) => {
@@ -65,7 +58,6 @@ export function totalUnidades(carrito) {
   return carrito.reduce((suma, i) => suma + i.cantidad, 0);
 }
 
-/** Une el carrito guardado del usuario con lo que agregó como visitante (se queda con la mayor cantidad). */
 export function unirCarritos(guardado, visitante) {
   const resultado = guardado.map((i) => ({ ...i }));
   visitante.forEach((item) => {

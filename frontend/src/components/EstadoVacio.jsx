@@ -1,4 +1,3 @@
-/** Mensaje para listas vacías o páginas sin resultados. */
 export default function EstadoVacio({ titulo, mensaje, children }) {
   return (
     <div className="tarjeta-oscura px-4 py-12 text-center">

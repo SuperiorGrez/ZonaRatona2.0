@@ -6,7 +6,6 @@ import BotonConfirmar from '../../components/BotonConfirmar';
 import Alerta from '../../components/Alerta';
 import categoriasService from '../../services/categoriasService';
 
-/** Listado de categorías con acciones de editar y eliminar. */
 export default function CategoriasAdmin({ productos, categorias, onCambio }) {
   const [aviso, setAviso] = useState({ mensaje: '', tipo: 'exito' });
 

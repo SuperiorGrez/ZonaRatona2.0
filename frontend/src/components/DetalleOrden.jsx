@@ -10,7 +10,6 @@ function Dato({ etiqueta, valor, ancho = '' }) {
   );
 }
 
-/** Detalle de solo lectura de una orden: cliente, dirección, productos y total. */
 export default function DetalleOrden({ orden }) {
   const { cliente, direccion } = orden;
   return (

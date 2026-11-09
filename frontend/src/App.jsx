@@ -49,26 +49,18 @@ import UsuariosAdmin from './pages/admin/UsuariosAdmin';
 import UsuarioDetalle from './pages/admin/UsuarioDetalle';
 import Perfil from './pages/admin/Perfil';
 
-/**
- * Componente raíz. Aquí vive el estado compartido de la aplicación
- * (usuario con sesión, catálogo y carrito) y se entrega por props
- * a cada página y componente que lo necesita.
- */
 export default function App() {
-  // ---------- Sesión ----------
   const [usuario, setUsuario] = useState(() => authService.sesionActual());
 
-  // ---------- Catálogo (desde json-server) ----------
   const [productos, setProductos] = useState([]);
   const [categorias, setCategorias] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [errorCarga, setErrorCarga] = useState('');
 
-  // ---------- Carrito ----------
   const [items, setItems] = useState([]);
   const [aviso, setAviso] = useState(null);
   const carritoCargado = useRef(false);
-  const ultimoGuardado = useRef(''); // carrito tal como está en db.json (JSON)
+  const ultimoGuardado = useRef('');
   const temporizadorAviso = useRef(null);
 
   async function recargarCatalogo() {
@@ -88,7 +80,6 @@ export default function App() {
     recargarCatalogo();
   }, []);
 
-  // Al iniciar sesión se trae el carrito guardado en db.json y se une con lo agregado como visitante.
   useEffect(() => {
     carritoCargado.current = false;
     if (!usuario) return;
@@ -102,9 +93,6 @@ export default function App() {
       .catch(() => {});
   }, [usuario?.id]);
 
-  // Cada cambio del carrito de un usuario con sesión se guarda en db.json.
-  // Solo se escribe si el carrito cambió: así recargar la página no modifica db.json
-  // (evita un loop de recargas si algún servidor recarga al cambiar ese archivo).
   useEffect(() => {
     if (!usuario || !carritoCargado.current) return;
     const json = JSON.stringify(items);
@@ -122,7 +110,6 @@ export default function App() {
   const categoriaDe = (producto) => categorias.find((c) => c.id === producto.categoriaId);
   const detalle = detalleCarrito(items, productos);
 
-  /** Todo lo que las páginas necesitan del carrito, agrupado en un objeto. */
   const carrito = {
     items,
     detalle,
@@ -143,7 +130,6 @@ export default function App() {
     vaciar: () => setItems([]),
   };
 
-  // ---------- Acciones de sesión ----------
   async function iniciarSesion(identificador, clave) {
     const resultado = await authService.login(identificador, clave);
     if (resultado.ok) setUsuario(resultado.sesion);
@@ -162,10 +148,9 @@ export default function App() {
 
   async function compraRealizada() {
     setItems([]);
-    await recargarCatalogo(); // el stock cambió
+    await recargarCatalogo();
   }
 
-  // ---------- Envoltorios de layout ----------
   function contenido(pagina) {
     if (cargando) return <EstadoVacio titulo="Cargando..." />;
     if (errorCarga) return <EstadoVacio titulo="Sin conexión" mensaje={errorCarga} />;

@@ -4,7 +4,6 @@ import SelectorRegionComuna from './SelectorRegionComuna';
 import { validarUsuario, hayErrores } from '../utils/validaciones';
 import { manejarCambio } from '../utils/formularios';
 
-/** Formulario para que el usuario logueado edite sus propios datos. */
 export default function FormularioPerfil({ inicial, onGuardar }) {
   const [valores, setValores] = useState({
     usuario: inicial.usuario,

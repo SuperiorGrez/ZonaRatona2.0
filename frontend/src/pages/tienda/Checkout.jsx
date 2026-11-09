@@ -5,12 +5,6 @@ import FormularioCheckout from '../../components/FormularioCheckout';
 import ordenesService from '../../services/ordenesService';
 import { formatearPrecio } from '../../utils/formato';
 
-/**
- * Datos iniciales del checkout:
- *  1) si viene de un pago fallido, se reutilizan los datos de esa orden;
- *  2) si hay sesión, se autocompleta con los datos del usuario;
- *  3) si no, el formulario parte vacío.
- */
 function datosIniciales(usuario, ordenAnterior) {
   if (ordenAnterior) {
     return { ...ordenAnterior.cliente, ...ordenAnterior.direccion, entrega: ordenAnterior.entrega };
@@ -21,7 +15,6 @@ function datosIniciales(usuario, ordenAnterior) {
   return {};
 }
 
-/** Paso de pago: resumen del carrito + datos del cliente, entrega y tarjeta. */
 export default function Checkout({ usuario, carrito, onCompraRealizada }) {
   const { detalle, total } = carrito;
   const navegar = useNavigate();

@@ -12,7 +12,6 @@ const EQUIPO = [
   { nombre: 'Manuel Vargas', cargo: 'Desarrollador Fullstack' },
 ];
 
-/** Página institucional "Nosotros". */
 export default function Nosotros() {
   return (
     <>

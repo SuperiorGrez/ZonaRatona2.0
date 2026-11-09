@@ -16,7 +16,6 @@ export function BadgeEstado({ estado }) {
   return <span className={`badge text-white ${e.color}`}>{e.texto}</span>;
 }
 
-/** Listado de órdenes / boletas con filtro por estado y búsqueda. */
 export default function Ordenes() {
   const [ordenes, setOrdenes] = useState([]);
   const [estado, setEstado] = useState('');

@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import AdminSidebar from './AdminSidebar';
 
-/** Estructura del panel administrativo: barra superior + menú lateral + contenido. */
 export default function AdminLayout({ children, usuario, onCerrarSesion }) {
   const navegar = useNavigate();
   const [menuMovil, setMenuMovil] = useState(false);

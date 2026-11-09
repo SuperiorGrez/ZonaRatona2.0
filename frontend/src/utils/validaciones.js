@@ -1,9 +1,3 @@
-/**
- * Validaciones de formularios. Son funciones puras: reciben los valores del
- * formulario y devuelven un objeto { campo: 'mensaje de error' }.
- * Si el objeto está vacío, el formulario es válido.
- */
-
 const REGEX_EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 export function esEmailValido(email) {
@@ -14,7 +8,6 @@ export function esVacio(valor) {
   return valor === undefined || valor === null || String(valor).trim() === '';
 }
 
-/** Mínimo 6 caracteres, una mayúscula y un número. */
 export function validarClave(clave) {
   if (esVacio(clave)) return 'La contraseña es obligatoria.';
   if (clave.length < 6) return 'La contraseña debe tener al menos 6 caracteres.';

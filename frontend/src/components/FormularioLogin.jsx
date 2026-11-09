@@ -2,11 +2,6 @@ import { useRef, useState } from 'react';
 import Alerta from './Alerta';
 import { validarLogin, hayErrores } from '../utils/validaciones';
 
-/**
- * Formulario de inicio de sesión.
- * Maneja su propio estado (usuario, clave, error) y delega la autenticación
- * al padre mediante la prop onIngresar(usuario, clave) => { ok, error }.
- */
 export default function FormularioLogin({ onIngresar }) {
   const [usuario, setUsuario] = useState('');
   const [clave, setClave] = useState('');

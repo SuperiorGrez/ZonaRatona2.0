@@ -1,4 +1,3 @@
-/** Control - / cantidad / + que respeta un mínimo y un máximo. */
 export default function SelectorCantidad({ cantidad, minimo = 1, maximo, onCambiar }) {
   const boton = 'cursor-pointer px-3 py-1 font-bold hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-40';
   return (

@@ -1,13 +1,6 @@
 import TarjetaProducto from './TarjetaProducto';
 import EstadoVacio from './EstadoVacio';
 
-/**
- * Grilla responsiva de productos.
- * @param productos    lista a mostrar
- * @param categorias   para mostrar el nombre de la categoría de cada producto
- * @param onAgregar    callback al presionar "Agregar al carrito"
- * @param puedeAgregar función (producto) => boolean
- */
 export default function ListaProductos({
   productos,
   categorias = [],

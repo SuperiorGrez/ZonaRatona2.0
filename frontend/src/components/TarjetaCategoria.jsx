@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import ImagenProducto from './ImagenProducto';
 
-/** Tarjeta de categoría con imagen, nombre y cantidad de productos. */
 export default function TarjetaCategoria({ categoria, cantidad, activa = false }) {
   return (
     <Link

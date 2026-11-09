@@ -18,7 +18,6 @@ const INICIAL = {
   terminos: false,
 };
 
-/** Calcula la fortaleza de una contraseña de 0 a 4. */
 function fortalezaClave(clave) {
   let puntos = 0;
   if (clave.length >= 6) puntos++;
@@ -36,7 +35,6 @@ const NIVELES = [
   { texto: 'Fuerte', color: 'text-green-500' },
 ];
 
-/** Formulario de registro de clientes con validación en el cliente. */
 export default function FormularioRegistro({ onRegistrar }) {
   const [valores, setValores] = useState(INICIAL);
   const [errores, setErrores] = useState({});

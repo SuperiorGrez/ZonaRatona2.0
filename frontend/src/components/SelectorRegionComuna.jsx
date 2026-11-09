@@ -1,10 +1,6 @@
 import CampoFormulario from './CampoFormulario';
 import { REGIONES, comunasDeRegion } from '../data/regiones';
 
-/**
- * Selects dependientes región → comuna. Al cambiar la región se limpia la comuna.
- * onChange recibe eventos con { target: { name, value } } igual que un input.
- */
 export default function SelectorRegionComuna({ region, comuna, onChange, errores = {}, requerido = true }) {
   const comunas = comunasDeRegion(region);
 

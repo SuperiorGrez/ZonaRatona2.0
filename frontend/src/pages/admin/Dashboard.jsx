@@ -8,7 +8,6 @@ import productosService from '../../services/productosService';
 import usuariosService from '../../services/usuariosService';
 import { formatearPrecio } from '../../utils/formato';
 
-/** Dashboard: métricas principales y accesos a cada módulo. */
 export default function Dashboard({ productos }) {
   const [ordenes, setOrdenes] = useState([]);
   const [usuarios, setUsuarios] = useState([]);

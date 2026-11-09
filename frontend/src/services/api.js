@@ -1,12 +1,3 @@
-/**
- * Cliente HTTP para json-server.
- * json-server expone db.json como una API REST en http://localhost:3001:
- *   GET    /productos        → lista
- *   GET    /productos/5      → uno
- *   POST   /productos        → crear
- *   PATCH  /productos/5      → actualizar campos
- *   DELETE /productos/5      → eliminar
- */
 export const API_URL = 'http://localhost:3001';
 
 export async function api(ruta, metodo = 'GET', datos) {

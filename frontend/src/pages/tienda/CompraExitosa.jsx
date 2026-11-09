@@ -5,7 +5,6 @@ import EstadoVacio from '../../components/EstadoVacio';
 import Alerta from '../../components/Alerta';
 import ordenesService from '../../services/ordenesService';
 
-/** Confirmación de compra exitosa con el resumen de la boleta. */
 export default function CompraExitosa() {
   const { id } = useParams();
   const [mensaje, setMensaje] = useState('');

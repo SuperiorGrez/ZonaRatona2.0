@@ -13,7 +13,6 @@ const ENLACES = [
   { ruta: '/contacto', texto: 'Contacto' },
 ];
 
-/** Barra de navegación principal de la tienda. */
 export default function Navbar({ usuario, categorias, total, unidades, onCerrarSesion }) {
   const esAdmin = usuario?.rol === 'admin';
   const navegar = useNavigate();
@@ -23,7 +22,6 @@ export default function Navbar({ usuario, categorias, total, unidades, onCerrarS
   const [categoriasAbiertas, setCategoriasAbiertas] = useState(false);
   const [busqueda, setBusqueda] = useState('');
 
-  // Cierra los menús al cambiar de página.
   useEffect(() => {
     setMenuAbierto(false);
     setCategoriasAbiertas(false);
@@ -59,7 +57,6 @@ export default function Navbar({ usuario, categorias, total, unidades, onCerrarS
         </button>
 
         <div className={`${menuAbierto ? 'flex' : 'hidden'} w-full flex-col gap-3 py-3 lg:flex lg:w-auto lg:flex-1 lg:py-0`}>
-          {/* Fila 1: buscador + sesión */}
           <div className="flex flex-col gap-2 lg:flex-row lg:items-center">
             <form className="flex flex-1 gap-2 lg:mx-auto lg:max-w-md" role="search" onSubmit={buscar}>
               <input
@@ -103,7 +100,6 @@ export default function Navbar({ usuario, categorias, total, unidades, onCerrarS
             </div>
           </div>
 
-          {/* Fila 2: enlaces + carrito */}
           <ul className="flex flex-col gap-1 lg:flex-row lg:items-center lg:justify-center lg:gap-6">
             {ENLACES.slice(0, 2).map((e) => (
               <li key={e.ruta}>

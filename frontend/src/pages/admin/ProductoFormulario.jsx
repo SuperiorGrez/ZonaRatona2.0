@@ -4,7 +4,6 @@ import EstadoVacio from '../../components/EstadoVacio';
 import FormularioProducto from '../../components/FormularioProducto';
 import productosService from '../../services/productosService';
 
-/** Vista "Nuevo producto" (sin id) y "Editar producto" (con id). */
 export default function ProductoFormulario({ productos, categorias, onCambio }) {
   const { id } = useParams();
   const navegar = useNavigate();

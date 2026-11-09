@@ -21,7 +21,6 @@ const CHECKOUT_VACIO = {
   cvv: '',
 };
 
-/** Agrupa los dígitos de la tarjeta de 4 en 4 mientras el usuario escribe. */
 function formatearTarjeta(valor) {
   return valor
     .replace(/\D/g, '')
@@ -29,10 +28,6 @@ function formatearTarjeta(valor) {
     .replace(/(\d{4})(?=\d)/g, '$1 ');
 }
 
-/**
- * Datos del cliente, dirección de entrega, opción de despacho y pago.
- * Llama a onPagar(valores) cuando todo es válido.
- */
 export default function FormularioCheckout({ inicial, subtotal, onPagar }) {
   const [valores, setValores] = useState({ ...CHECKOUT_VACIO, ...inicial });
   const [errores, setErrores] = useState({});

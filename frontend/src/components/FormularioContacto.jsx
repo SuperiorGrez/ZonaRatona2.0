@@ -6,7 +6,6 @@ import { manejarCambio } from '../utils/formularios';
 
 const MAX_MENSAJE = 500;
 
-/** Formulario de contacto con contador de caracteres. */
 export default function FormularioContacto({ onEnviar, inicial = {} }) {
   const vacio = { nombre: inicial.nombre || '', email: inicial.email || '', asunto: '', mensaje: '' };
   const [valores, setValores] = useState(vacio);

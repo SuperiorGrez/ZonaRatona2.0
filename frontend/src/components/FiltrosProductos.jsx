@@ -1,9 +1,5 @@
 export const FILTROS_INICIALES = { texto: '', categoriaId: '', precioMax: '', soloStock: false, orden: 'relevancia' };
 
-/**
- * Barra de filtros del catálogo. Es "controlada": el estado vive en el padre,
- * que recibe cada cambio por onCambiar(nuevosFiltros).
- */
 export default function FiltrosProductos({ filtros, categorias, onCambiar, totalResultados }) {
   function cambiar(evento) {
     const { name, value, type, checked } = evento.target;

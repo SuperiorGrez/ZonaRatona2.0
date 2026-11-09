@@ -35,7 +35,6 @@ const categoriasService = {
     return { ok: true, categoria: await api(`/categorias/${id}`, 'PATCH', normalizar(datos)) };
   },
 
-  /** No se permite eliminar una categoría que todavía tiene productos. */
   async eliminar(id) {
     const enUso = await api(`/productos?categoriaId=${id}`);
     if (enUso.length > 0) return { ok: false, error: `La categoría tiene ${enUso.length} producto(s) asociados.` };

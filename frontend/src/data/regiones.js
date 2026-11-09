@@ -1,4 +1,3 @@
-/** Regiones de Chile con una selección de comunas para el formulario de despacho. */
 export const REGIONES = [
   { nombre: 'Región de Arica y Parinacota', comunas: ['Arica', 'Camarones', 'Putre', 'General Lagos'] },
   { nombre: 'Región de Tarapacá', comunas: ['Iquique', 'Alto Hospicio', 'Pozo Almonte', 'Pica'] },

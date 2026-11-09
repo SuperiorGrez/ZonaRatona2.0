@@ -1,7 +1,3 @@
-/**
- * Campo de formulario controlado con etiqueta y mensaje de error.
- * Soporta input, textarea y select (las opciones se pasan como children).
- */
 export default function CampoFormulario({
   etiqueta,
   nombre,

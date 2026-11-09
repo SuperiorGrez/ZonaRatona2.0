@@ -18,7 +18,6 @@ const PRODUCTO_VACIO = {
   activo: true,
 };
 
-/** Convierte un producto guardado a valores de formulario (todo string). */
 function productoAFormulario(producto) {
   if (!producto) return PRODUCTO_VACIO;
   return {
@@ -32,7 +31,6 @@ function productoAFormulario(producto) {
   };
 }
 
-/** Formulario para crear o editar un producto (panel admin). */
 export default function FormularioProducto({ inicial, categorias, onGuardar, onCancelar, textoBoton = 'Guardar producto' }) {
   const [valores, setValores] = useState(() => productoAFormulario(inicial));
   const [errores, setErrores] = useState({});

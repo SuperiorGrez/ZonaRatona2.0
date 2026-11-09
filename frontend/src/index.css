@@ -1,8 +1,5 @@
 @import "tailwindcss";
 
-/* ============================================================
-   Tema ZonaRatona con Tailwind CSS
-   ============================================================ */
 @theme {
   --color-amarillo: #ffc600;
   --color-amarillo-oscuro: #e6b200;
@@ -16,7 +13,6 @@
   }
 }
 
-/* Clases reutilizables (se arman con utilidades de Tailwind) */
 @layer components {
   .contenedor {
     @apply mx-auto w-full max-w-7xl px-4;

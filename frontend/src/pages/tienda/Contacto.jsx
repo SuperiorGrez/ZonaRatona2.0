@@ -2,7 +2,6 @@ import EncabezadoPagina from '../../components/EncabezadoPagina';
 import FormularioContacto from '../../components/FormularioContacto';
 import { api } from '../../services/api';
 
-/** Página de contacto: formulario + datos de la tienda. */
 export default function Contacto({ usuario }) {
   async function guardarMensaje(datos) {
     await api('/mensajes', 'POST', { ...datos, fecha: new Date().toISOString(), leido: false });

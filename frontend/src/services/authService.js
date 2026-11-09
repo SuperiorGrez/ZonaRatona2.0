@@ -1,9 +1,5 @@
 import usuariosService, { sinClave } from './usuariosService';
 
-/*
- * La sesión vive en sessionStorage (se borra al cerrar la pestaña).
- * Los datos de los usuarios están en db.json (json-server).
- */
 const KEY_SESION = 'zr_sesion';
 const KEY_INTENTOS = 'zr_intentos';
 const MAX_INTENTOS = 5;
@@ -38,7 +34,6 @@ function registrarFallo() {
 }
 
 const authService = {
-  /** Inicia sesión con usuario o correo. Devuelve { ok, sesion } o { ok: false, error }. */
   async login(identificador, clave) {
     const espera = bloqueoRestante();
     if (espera > 0) return { ok: false, error: `Demasiados intentos fallidos. Espera ${espera} segundos.` };
@@ -76,14 +71,12 @@ const authService = {
     }
   },
 
-  /** Actualiza los datos guardados en la sesión (después de editar el perfil). */
   refrescarSesion(usuario) {
     const sesion = { ...this.sesionActual(), ...sinClave(usuario) };
     sessionStorage.setItem(KEY_SESION, JSON.stringify(sesion));
     return sesion;
   },
 
-  /** Registro público: siempre crea usuarios con rol "user". */
   registrar: (datos) => usuariosService.crear({ ...datos, rol: 'user', activo: true }),
 };
 

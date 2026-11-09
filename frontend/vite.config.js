@@ -7,7 +7,6 @@ export default defineConfig({
   server: {
     port: 5173,
     open: true,
-    // json-server escribe en db.json; Vite no debe recargar la página por eso.
     watch: { ignored: ['**/db.json'] },
   },
 });

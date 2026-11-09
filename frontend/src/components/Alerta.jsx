@@ -4,7 +4,6 @@ const ESTILOS = {
   info: 'border-sky-300 bg-sky-100 text-sky-800',
 };
 
-/** Mensaje de alerta. Solo se muestra cuando hay un mensaje (renderizado condicional). */
 export default function Alerta({ mensaje, tipo = 'error', onCerrar }) {
   if (!mensaje) return null;
   return (

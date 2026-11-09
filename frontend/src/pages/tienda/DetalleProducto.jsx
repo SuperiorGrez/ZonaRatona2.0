@@ -8,13 +8,11 @@ import EstadoVacio from '../../components/EstadoVacio';
 import productosService from '../../services/productosService';
 import { cantidadEnCarrito } from '../../utils/carrito';
 
-/** Detalle de un producto con selector de cantidad y productos relacionados. */
 export default function DetalleProducto({ productos, categorias, carrito }) {
   const { id } = useParams();
   const { maximoDe, agregar, puedeAgregar } = carrito;
   const [cantidad, setCantidad] = useState(1);
 
-  // Al navegar a otro producto (relacionados) se reinicia la cantidad.
   useEffect(() => setCantidad(1), [id]);
 
   const producto = productos.find((p) => p.id === Number(id));

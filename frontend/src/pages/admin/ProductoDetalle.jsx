@@ -7,7 +7,6 @@ import BotonConfirmar from '../../components/BotonConfirmar';
 import productosService from '../../services/productosService';
 import categoriasService from '../../services/categoriasService';
 
-/** Vista "Mostrar producto" del panel admin. */
 export default function ProductoDetalle({ productos, categorias, onCambio }) {
   const { id } = useParams();
   const navegar = useNavigate();

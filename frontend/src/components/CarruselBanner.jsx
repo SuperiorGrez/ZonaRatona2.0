@@ -1,10 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-/**
- * Carrusel de banners hecho con estado de React.
- * Avanza solo cada `intervalo` ms y permite navegar con flechas e indicadores.
- */
 export default function CarruselBanner({ diapositivas, intervalo = 5000 }) {
   const [actual, setActual] = useState(0);
   const total = diapositivas.length;

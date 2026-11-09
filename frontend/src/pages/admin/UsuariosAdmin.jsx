@@ -4,11 +4,6 @@ import EncabezadoPagina from '../../components/EncabezadoPagina';
 import usuariosService from '../../services/usuariosService';
 import { formatearFecha } from '../../utils/formato';
 
-/**
- * Listado de usuarios. El administrador solo puede verlos y
- * activarlos/desactivarlos; no edita sus datos personales.
- * @param usuario el administrador con sesión (no puede desactivarse a sí mismo)
- */
 export default function UsuariosAdmin({ usuario }) {
   const [usuarios, setUsuarios] = useState([]);
   const [rol, setRol] = useState('');

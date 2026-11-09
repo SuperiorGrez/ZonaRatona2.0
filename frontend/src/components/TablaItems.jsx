@@ -1,7 +1,6 @@
 import ImagenProducto from './ImagenProducto';
 import { formatearPrecio } from '../utils/formato';
 
-/** Tabla de solo lectura con los productos de una compra u orden. */
 export default function TablaItems({ items }) {
   return (
     <div className="overflow-x-auto">

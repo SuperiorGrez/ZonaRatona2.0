@@ -5,10 +5,6 @@ import Alerta from '../../components/Alerta';
 import FormularioPerfil from '../../components/FormularioPerfil';
 import usuariosService from '../../services/usuariosService';
 
-/**
- * Perfil del administrador: editar sus propios datos.
- * onActualizado: avisa a App para refrescar los datos de la sesión.
- */
 export default function Perfil({ usuario, onActualizado }) {
   const [datos, setDatos] = useState(null);
   const [mensaje, setMensaje] = useState('');
@@ -20,7 +16,6 @@ export default function Perfil({ usuario, onActualizado }) {
   if (!datos) return <EstadoVacio titulo="Cargando..." />;
 
   async function guardar(valores) {
-    // El administrador no puede quitarse su propio rol ni desactivarse.
     const resultado = await usuariosService.actualizar(usuario.id, { ...valores, rol: datos.rol, activo: true });
     if (resultado.ok) {
       onActualizado(resultado.usuario);

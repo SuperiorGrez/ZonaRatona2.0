@@ -6,7 +6,6 @@ import EstadoVacio from '../../components/EstadoVacio';
 import ordenesService from '../../services/ordenesService';
 import { ESTADOS } from './Ordenes';
 
-/** Muestra la boleta de una orden y permite cambiar su estado. */
 export default function Boleta() {
   const { id } = useParams();
   const [orden, setOrden] = useState(undefined);

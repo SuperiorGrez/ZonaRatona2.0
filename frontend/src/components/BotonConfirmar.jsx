@@ -1,9 +1,5 @@
 import { useState } from 'react';
 
-/**
- * Botón que pide confirmación en línea antes de ejecutar una acción
- * (reemplaza a window.confirm).
- */
 export default function BotonConfirmar({ etiqueta = 'Eliminar', pregunta = '¿Seguro?', onConfirmar, clase = 'btn btn-sm btn-borde text-red-500' }) {
   const [preguntando, setPreguntando] = useState(false);
 

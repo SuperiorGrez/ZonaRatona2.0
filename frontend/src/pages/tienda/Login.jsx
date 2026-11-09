@@ -2,7 +2,6 @@ import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import FormularioLogin from '../../components/FormularioLogin';
 import Alerta from '../../components/Alerta';
 
-/** Página de inicio de sesión. Redirige al panel si es admin. */
 export default function Login({ usuario, onIniciarSesion }) {
   const navegar = useNavigate();
   const ubicacion = useLocation();

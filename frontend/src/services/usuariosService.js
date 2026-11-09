@@ -30,7 +30,6 @@ async function verificarUnicos(datos, idExcluido, errores) {
   if (!errores.email && otros.some((u) => u.email.toLowerCase() === email)) errores.email = 'El correo ya está registrado.';
 }
 
-/** Quita la contraseña antes de entregar los datos a la interfaz. */
 export function sinClave(usuario) {
   if (!usuario) return null;
   const { clave, ...resto } = usuario;
@@ -42,7 +41,6 @@ const usuariosService = {
 
   obtener: async (id) => sinClave(await api(`/usuarios/${id}`)),
 
-  /** Uso interno (login): busca por usuario o correo e incluye la contraseña. */
   async buscarPorIdentificador(identificador) {
     const buscado = String(identificador || '').trim().toLowerCase();
     const usuarios = await api('/usuarios');
@@ -64,7 +62,6 @@ const usuariosService = {
     return { ok: true, usuario: sinClave(await api(`/usuarios/${id}`, 'PATCH', normalizar(datos))) };
   },
 
-  /** Activa o desactiva una cuenta (el admin no edita datos personales). */
   cambiarEstado: async (id, activo) => sinClave(await api(`/usuarios/${id}`, 'PATCH', { activo })),
 
   nuevosDelMes(usuarios, hoy = new Date()) {

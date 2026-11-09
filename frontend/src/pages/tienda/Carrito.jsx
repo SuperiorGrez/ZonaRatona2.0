@@ -7,7 +7,6 @@ import ResumenCompra from '../../components/ResumenCompra';
 import ListaProductos from '../../components/ListaProductos';
 import productosService from '../../services/productosService';
 
-/** Carrito de compras: editar cantidades, quitar, vaciar e ir a pagar. */
 export default function Carrito({ productos, categorias, carrito }) {
   const { detalle, total, cambiarCantidad, quitar, vaciar, maximoDe, agregar, puedeAgregar } = carrito;
   const navegar = useNavigate();

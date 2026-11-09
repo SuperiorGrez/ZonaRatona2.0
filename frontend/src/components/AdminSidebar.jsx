@@ -9,7 +9,6 @@ export const SECCIONES_ADMIN = [
   { ruta: '/admin/perfil', etiqueta: 'Perfil', descripcion: 'Tu información personal.' },
 ];
 
-/** Menú lateral del panel de administración. */
 export default function AdminSidebar({ onNavegar, onCerrarSesion }) {
   return (
     <nav className="flex h-full flex-col" aria-label="Menú administrador">

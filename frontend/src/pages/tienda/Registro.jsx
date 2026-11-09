@@ -2,7 +2,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import FormularioRegistro from '../../components/FormularioRegistro';
 import authService from '../../services/authService';
 
-/** Página de registro de nuevos clientes. */
 export default function Registro() {
   const navegar = useNavigate();
 

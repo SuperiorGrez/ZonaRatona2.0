@@ -22,7 +22,6 @@ async function codigoRepetido(codigo, idExcluido) {
   return iguales.some((p) => p.id !== Number(idExcluido));
 }
 
-/** Servicio de productos: CRUD contra json-server + funciones de consulta. */
 const productosService = {
   listar: () => api('/productos'),
 
@@ -46,15 +45,12 @@ const productosService = {
 
   eliminar: (id) => api(`/productos/${id}`, 'DELETE'),
 
-  /** Descuenta stock luego de una compra exitosa. */
   async descontarStock(items) {
     for (const { productoId, cantidad } of items) {
       const producto = await api(`/productos/${productoId}`);
       if (producto) await api(`/productos/${productoId}`, 'PATCH', { stock: Math.max(producto.stock - cantidad, 0) });
     }
   },
-
-  // ---- Consultas sobre una lista ya cargada (no llaman al servidor) ----
 
   disponibles: (productos) => productos.filter((p) => p.activo),
 
@@ -67,7 +63,6 @@ const productosService = {
   relacionados: (producto, productos, cantidad = 5) =>
     productos.filter((p) => p.activo && p.categoriaId === producto.categoriaId && p.id !== producto.id).slice(0, cantidad),
 
-  /** Filtra y ordena productos: { texto, categoriaId, precioMax, soloStock, orden }. */
   filtrar(productos, { texto = '', categoriaId = '', precioMax = '', soloStock = false, orden = 'relevancia' } = {}) {
     const buscado = texto.trim().toLowerCase();
     const resultado = productos.filter((p) => {

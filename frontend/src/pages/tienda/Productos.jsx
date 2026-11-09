@@ -5,12 +5,10 @@ import FiltrosProductos, { FILTROS_INICIALES } from '../../components/FiltrosPro
 import ListaProductos from '../../components/ListaProductos';
 import productosService from '../../services/productosService';
 
-/** Catálogo completo con búsqueda, filtros y orden. */
 export default function Productos({ productos, categorias, carrito }) {
   const [parametros] = useSearchParams();
   const [filtros, setFiltros] = useState({ ...FILTROS_INICIALES, texto: parametros.get('buscar') || '' });
 
-  // Si se busca desde la barra superior estando ya en el catálogo, actualizamos el filtro.
   useEffect(() => {
     setFiltros((f) => ({ ...f, texto: parametros.get('buscar') || '' }));
   }, [parametros]);

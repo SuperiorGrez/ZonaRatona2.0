@@ -1,6 +1,5 @@
 import { formatearPrecio, porcentajeDescuento } from '../utils/formato';
 
-/** Muestra el precio; si hay oferta, tacha el precio normal y muestra el descuento. */
 export default function PrecioProducto({ precio, precioOferta, grande = false }) {
   const descuento = porcentajeDescuento(precio, precioOferta);
   const tamano = grande ? 'text-3xl' : 'text-xl';

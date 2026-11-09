@@ -2,11 +2,6 @@ import { Link } from 'react-router-dom';
 import ImagenProducto from './ImagenProducto';
 import PrecioProducto from './PrecioProducto';
 
-/**
- * Tarjeta de un producto en el catálogo.
- * Componente de presentación: recibe todo por props y avisa al padre
- * cuando el usuario quiere agregar el producto (onAgregar).
- */
 export default function TarjetaProducto({ producto, nombreCategoria, onAgregar, puedeAgregar = true }) {
   const sinStock = !producto.activo || producto.stock <= 0;
   const enOferta = producto.precioOferta && producto.precioOferta < producto.precio;

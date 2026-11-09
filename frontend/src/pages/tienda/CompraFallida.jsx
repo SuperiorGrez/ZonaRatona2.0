@@ -4,7 +4,6 @@ import DetalleOrden from '../../components/DetalleOrden';
 import EstadoVacio from '../../components/EstadoVacio';
 import ordenesService from '../../services/ordenesService';
 
-/** Pago rechazado: muestra el motivo y permite reintentar con los mismos datos. */
 export default function CompraFallida() {
   const { id } = useParams();
   const navegar = useNavigate();

@@ -7,7 +7,6 @@ import usuariosService from '../../services/usuariosService';
 import { formatearFecha, formatearPrecio } from '../../utils/formato';
 import { BadgeEstado } from './Ordenes';
 
-/** Vista "Mostrar usuario": datos (solo lectura), estado e historial de compras. */
 export default function UsuarioDetalle({ usuario: admin }) {
   const { id } = useParams();
   const [usuario, setUsuario] = useState(undefined);
