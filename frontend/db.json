@@ -1,0 +1,829 @@
+{
+  "categorias": [
+    {
+      "id": 1,
+      "nombre": "Consolas",
+      "descripcion": "Consolas de última generación y clásicas.",
+      "limitePorProducto": 2,
+      "imagen": "https://www.weplay.cl/pub/media/catalog/product/cache/3f1b140c3c9f36fbf6b01dffb521c246/4/9/49488724159340.jpeg"
+    },
+    {
+      "id": 2,
+      "nombre": "PlayStation 5",
+      "descripcion": "Juegos físicos para PS5.",
+      "limitePorProducto": 3,
+      "imagen": "https://media.falabella.com/falabellaCL/16570989_2/w=1200,h=1400,fit=cover"
+    },
+    {
+      "id": 3,
+      "nombre": "PlayStation 4",
+      "descripcion": "Juegos físicos para PS4.",
+      "limitePorProducto": 3,
+      "imagen": "https://http2.mlstatic.com/D_NQ_NP_718660-MLA99509627130_112025-O.webp"
+    },
+    {
+      "id": 4,
+      "nombre": "Nintendo Switch 2",
+      "descripcion": "Lo nuevo de Nintendo.",
+      "limitePorProducto": 3,
+      "imagen": "https://www.weplay.cl/pub/media/catalog/product/cache/3f1b140c3c9f36fbf6b01dffb521c246/0/4/0454969054538.jpeg"
+    },
+    {
+      "id": 5,
+      "nombre": "Nintendo Switch",
+      "descripcion": "Clásicos y exclusivos de Switch.",
+      "limitePorProducto": 3,
+      "imagen": "https://http2.mlstatic.com/D_NQ_NP_902828-MLA99452754962_112025-O.webp"
+    },
+    {
+      "id": 6,
+      "nombre": "Xbox One",
+      "descripcion": "Juegos para Xbox One.",
+      "limitePorProducto": 3,
+      "imagen": "https://media.falabella.com/falabellaCL/112637354_01/w=800,h=800,fit=pad"
+    },
+    {
+      "id": 7,
+      "nombre": "Xbox Series S/X",
+      "descripcion": "Juegos para la nueva generación Xbox.",
+      "limitePorProducto": 3,
+      "imagen": "https://http2.mlstatic.com/D_NQ_NP_828922-CBT91089005957_082025-O.webp"
+    }
+  ],
+  "productos": [
+    {
+      "id": 1,
+      "codigo": "PS-001",
+      "nombre": "PlayStation 5 Slim",
+      "categoriaId": 1,
+      "precio": 749990,
+      "precioOferta": null,
+      "stock": 5,
+      "stockCritico": 2,
+      "activo": true,
+      "imagen": "https://www.weplay.cl/pub/media/catalog/product/cache/3f1b140c3c9f36fbf6b01dffb521c246/4/9/49488724159340.jpeg",
+      "descripcion": "Consola PlayStation 5 Slim con lector de discos, SSD de 1 TB y control DualSense."
+    },
+    {
+      "id": 2,
+      "codigo": "XB-001",
+      "nombre": "Xbox Series X",
+      "categoriaId": 1,
+      "precio": 669990,
+      "precioOferta": null,
+      "stock": 6,
+      "stockCritico": 2,
+      "activo": true,
+      "imagen": "https://i5.walmartimages.com/seo/Microsoft-Xbox-Series-X-1TB-SSD-Gaming-Console_7731b7a3-2b2c-4cdd-b79a-56958896fc7c.7579fef99ebf8da06c02e6a2ecb62f4f.jpeg",
+      "descripcion": "La Xbox más potente: 4K a 120 FPS, SSD de 1 TB y retrocompatibilidad."
+    },
+    {
+      "id": 3,
+      "codigo": "PS-002",
+      "nombre": "PlayStation 4 Slim 1 TB",
+      "categoriaId": 1,
+      "precio": 329990,
+      "precioOferta": 279990,
+      "stock": 4,
+      "stockCritico": 2,
+      "activo": true,
+      "imagen": "https://assets.pcfactory.cl/public/foto/31328/2_500.jpg",
+      "descripcion": "PlayStation 4 Slim 1 TB, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 4,
+      "codigo": "XB-002",
+      "nombre": "Xbox One",
+      "categoriaId": 1,
+      "precio": 199990,
+      "precioOferta": 169990,
+      "stock": 2,
+      "stockCritico": 2,
+      "activo": true,
+      "imagen": "https://assets.pcfactory.cl/public/foto/27096/1_500.jpg",
+      "descripcion": "Xbox One, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 5,
+      "codigo": "NS-001",
+      "nombre": "Nintendo Switch",
+      "categoriaId": 1,
+      "precio": 299990,
+      "precioOferta": null,
+      "stock": 5,
+      "stockCritico": 2,
+      "activo": true,
+      "imagen": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcS5Mp6R1QkKQu2T3vpjAKv5_8j4zk8NQUJ_NG2i0j_qPVX-LVTByKnIaT-lCz0HccrWku744lTJk6QgkCyY-nLa-VuhSXb4YmdolzVhjk1N2xboDpOOGbWfiXA",
+      "descripcion": "Nintendo Switch, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 6,
+      "codigo": "NS2-001",
+      "nombre": "Nintendo Switch 2",
+      "categoriaId": 1,
+      "precio": 629990,
+      "precioOferta": null,
+      "stock": 4,
+      "stockCritico": 2,
+      "activo": true,
+      "imagen": "https://www.weplay.cl/pub/media/catalog/product/cache/3f1b140c3c9f36fbf6b01dffb521c246/1/_/1_1745414561000.jpg",
+      "descripcion": "La nueva Nintendo Switch 2, pantalla de 7,9\" y Joy-Con 2 magnéticos."
+    },
+    {
+      "id": 7,
+      "codigo": "PS5-001",
+      "nombre": "Astro Bot",
+      "categoriaId": 2,
+      "precio": 69990,
+      "precioOferta": null,
+      "stock": 0,
+      "stockCritico": 3,
+      "activo": true,
+      "imagen": "https://i5.walmartimages.cl/asr/3613f1ca-5850-4706-81a1-2a2ae64556d6.a611ee2af1d1b79dea0072e6d2082036.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
+      "descripcion": "Astro Bot, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 8,
+      "codigo": "PS5-002",
+      "nombre": "Stellar Blade",
+      "categoriaId": 2,
+      "precio": 69990,
+      "precioOferta": null,
+      "stock": 9,
+      "stockCritico": 3,
+      "activo": true,
+      "imagen": "https://clsonyb2c.vtexassets.com/arquivos/ids/463769/ps5-STELLAR-BLADE-packshot-2.jpg?v=638948488303730000",
+      "descripcion": "Stellar Blade, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 9,
+      "codigo": "PS5-003",
+      "nombre": "Death Stranding 2: On the Beach",
+      "categoriaId": 2,
+      "precio": 79990,
+      "precioOferta": null,
+      "stock": 9,
+      "stockCritico": 3,
+      "activo": true,
+      "imagen": "https://clsonyb2c.vtexassets.com/arquivos/ids/467668/PS5-Death-Stranding-2-2.jpg?v=638859136791230000",
+      "descripcion": "Death Stranding 2: On the Beach, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 10,
+      "codigo": "PS5-004",
+      "nombre": "God of War Ragnarok",
+      "categoriaId": 2,
+      "precio": 59990,
+      "precioOferta": 44990,
+      "stock": 14,
+      "stockCritico": 3,
+      "activo": true,
+      "imagen": "https://media.falabella.com/falabellaCL/16570989_2/w=1200,h=1400,fit=cover",
+      "descripcion": "God of War Ragnarok, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 11,
+      "codigo": "PS5-005",
+      "nombre": "Final Fantasy VII Rebirth",
+      "categoriaId": 2,
+      "precio": 69990,
+      "precioOferta": null,
+      "stock": 11,
+      "stockCritico": 3,
+      "activo": true,
+      "imagen": "https://http2.mlstatic.com/D_NQ_NP_644247-MLA92112450946_092025-O-final-fantasy-vii-rebirth-ps5-fisico.webp",
+      "descripcion": "Final Fantasy VII Rebirth, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 12,
+      "codigo": "PS4-001",
+      "nombre": "Resident Evil 4",
+      "categoriaId": 3,
+      "precio": 39990,
+      "precioOferta": null,
+      "stock": 9,
+      "stockCritico": 3,
+      "activo": true,
+      "imagen": "https://http2.mlstatic.com/D_NQ_NP_718660-MLA99509627130_112025-O.webp",
+      "descripcion": "Resident Evil 4, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 13,
+      "codigo": "PS4-002",
+      "nombre": "Persona 5 Royal",
+      "categoriaId": 3,
+      "precio": 29990,
+      "precioOferta": 22990,
+      "stock": 7,
+      "stockCritico": 3,
+      "activo": true,
+      "imagen": "https://http2.mlstatic.com/D_NQ_NP_827924-MLA112166427728_062026-O.webp",
+      "descripcion": "Persona 5 Royal, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 14,
+      "codigo": "PS4-003",
+      "nombre": "The Witcher 3: Wild Hunt",
+      "categoriaId": 3,
+      "precio": 29990,
+      "precioOferta": 19990,
+      "stock": 12,
+      "stockCritico": 3,
+      "activo": true,
+      "imagen": "https://http2.mlstatic.com/D_NQ_NP_634099-MLA99944984211_112025-O.webp",
+      "descripcion": "The Witcher 3: Wild Hunt, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 15,
+      "codigo": "PS4-004",
+      "nombre": "God of War",
+      "categoriaId": 3,
+      "precio": 39990,
+      "precioOferta": 24990,
+      "stock": 6,
+      "stockCritico": 3,
+      "activo": true,
+      "imagen": "https://http2.mlstatic.com/D_Q_NP_2X_806222-MLA100000148187_112025-P.webp",
+      "descripcion": "God of War, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 16,
+      "codigo": "PS4-005",
+      "nombre": "Sekiro: Shadows Die Twice",
+      "categoriaId": 3,
+      "precio": 44990,
+      "precioOferta": null,
+      "stock": 5,
+      "stockCritico": 3,
+      "activo": true,
+      "imagen": "https://http2.mlstatic.com/D_NQ_NP_783138-CBT112456917803_052026-O.webp",
+      "descripcion": "Sekiro: Shadows Die Twice, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 17,
+      "codigo": "NS2-002",
+      "nombre": "Mario Kart World",
+      "categoriaId": 4,
+      "precio": 89990,
+      "precioOferta": null,
+      "stock": 9,
+      "stockCritico": 3,
+      "activo": true,
+      "imagen": "https://www.weplay.cl/pub/media/catalog/product/cache/3f1b140c3c9f36fbf6b01dffb521c246/0/4/0454969054538.jpeg",
+      "descripcion": "Mario Kart World, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 18,
+      "codigo": "NS2-003",
+      "nombre": "Donkey Kong Bananza",
+      "categoriaId": 4,
+      "precio": 72990,
+      "precioOferta": null,
+      "stock": 0,
+      "stockCritico": 3,
+      "activo": true,
+      "imagen": "https://www.weplay.cl/pub/media/catalog/product/cache/3f1b140c3c9f36fbf6b01dffb521c246/0/4/045496905576-00.jpg",
+      "descripcion": "Donkey Kong Bananza, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 19,
+      "codigo": "NS2-004",
+      "nombre": "Cyberpunk 2077: Ultimate Edition",
+      "categoriaId": 4,
+      "precio": 69990,
+      "precioOferta": null,
+      "stock": 6,
+      "stockCritico": 3,
+      "activo": true,
+      "imagen": "https://media.falabella.com/falabellaCL/144628795_01/w=1004,h=1500,fit=pad",
+      "descripcion": "Cyberpunk 2077: Ultimate Edition, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 20,
+      "codigo": "NS2-005",
+      "nombre": "Hogwarts Legacy - Switch 2 Edition",
+      "categoriaId": 4,
+      "precio": 59990,
+      "precioOferta": null,
+      "stock": 8,
+      "stockCritico": 3,
+      "activo": true,
+      "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj73At05bYckHuJCOoeRidVqwdMEDRsfzwBa_ipNUWsn747TC9vIU6oeg&s=10",
+      "descripcion": "Hogwarts Legacy - Switch 2 Edition, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 21,
+      "codigo": "NS2-006",
+      "nombre": "The Legend of Zelda: Breath of the Wild - Switch 2 Edition",
+      "categoriaId": 4,
+      "precio": 89990,
+      "precioOferta": null,
+      "stock": 7,
+      "stockCritico": 3,
+      "activo": true,
+      "imagen": "https://www.weplay.cl/pub/media/catalog/product/cache/3f1b140c3c9f36fbf6b01dffb521c246/0/4/0454969057746.jpeg",
+      "descripcion": "The Legend of Zelda: Breath of the Wild - Switch 2 Edition, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 22,
+      "codigo": "NS-002",
+      "nombre": "The Legend of Zelda: Tears of the Kingdom",
+      "categoriaId": 5,
+      "precio": 69990,
+      "precioOferta": null,
+      "stock": 9,
+      "stockCritico": 3,
+      "activo": true,
+      "imagen": "https://http2.mlstatic.com/D_NQ_NP_902828-MLA99452754962_112025-O.webp",
+      "descripcion": "The Legend of Zelda: Tears of the Kingdom, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 23,
+      "codigo": "NS-003",
+      "nombre": "Super Mario Bros. Wonder",
+      "categoriaId": 5,
+      "precio": 59990,
+      "precioOferta": null,
+      "stock": 10,
+      "stockCritico": 3,
+      "activo": true,
+      "imagen": "https://i5.walmartimages.cl/asr/8d62e5f6-3f4b-42e3-baf6-1373f7382f58.717214b0c3bcaee35c73da7123666b86.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
+      "descripcion": "Super Mario Bros. Wonder, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 24,
+      "codigo": "NS-004",
+      "nombre": "Metroid Prime Remastered",
+      "categoriaId": 5,
+      "precio": 54990,
+      "precioOferta": null,
+      "stock": 2,
+      "stockCritico": 3,
+      "activo": true,
+      "imagen": "https://rimage.ripley.cl/home.ripley/Attachment/MKP/4354/MPM10003087066/full_image-1",
+      "descripcion": "Metroid Prime Remastered, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 25,
+      "codigo": "NS-005",
+      "nombre": "Xenoblade Chronicles 3",
+      "categoriaId": 5,
+      "precio": 59990,
+      "precioOferta": null,
+      "stock": 6,
+      "stockCritico": 3,
+      "activo": true,
+      "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmHy9dYZ1j2C8Zppay886EQ-clV-CIsf-bULI-H-P9rSjxxtX1Ni7nLpw&s=10",
+      "descripcion": "Xenoblade Chronicles 3, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 26,
+      "codigo": "NS-006",
+      "nombre": "Luigi's Mansion 3",
+      "categoriaId": 5,
+      "precio": 59990,
+      "precioOferta": null,
+      "stock": 8,
+      "stockCritico": 3,
+      "activo": true,
+      "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6X1GX6pSiORoPEnf_0GXLp7E6P2DqAJgldB_qVBZf0Z7xrBBTupJXRQw_&s=10",
+      "descripcion": "Luigi's Mansion 3, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 27,
+      "codigo": "XB1-001",
+      "nombre": "Red Dead Redemption 2",
+      "categoriaId": 6,
+      "precio": 29990,
+      "precioOferta": 19990,
+      "stock": 9,
+      "stockCritico": 3,
+      "activo": true,
+      "imagen": "https://media.falabella.com/falabellaCL/112637354_01/w=800,h=800,fit=pad",
+      "descripcion": "Red Dead Redemption 2, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 28,
+      "codigo": "XB1-002",
+      "nombre": "Resident Evil 2",
+      "categoriaId": 6,
+      "precio": 29990,
+      "precioOferta": null,
+      "stock": 7,
+      "stockCritico": 3,
+      "activo": true,
+      "imagen": "https://http2.mlstatic.com/D_NQ_NP_913835-MLA99930564331_112025-O.webp",
+      "descripcion": "Resident Evil 2, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 29,
+      "codigo": "XB1-003",
+      "nombre": "Middle-earth: Shadow of War",
+      "categoriaId": 6,
+      "precio": 24990,
+      "precioOferta": 14990,
+      "stock": 8,
+      "stockCritico": 3,
+      "activo": true,
+      "imagen": "https://cashatmaxx.co.uk/cdn/shop/files/Untitled_8689858a-5073-42d3-8d4b-74d01cdb1c0c.png?v=1725979691",
+      "descripcion": "Middle-earth: Shadow of War, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 30,
+      "codigo": "XB1-004",
+      "nombre": "Killer Instinct: Definitive Edition",
+      "categoriaId": 6,
+      "precio": 29990,
+      "precioOferta": null,
+      "stock": 1,
+      "stockCritico": 3,
+      "activo": true,
+      "imagen": "https://http2.mlstatic.com/D_NQ_NP_669530-MLC31878814679_082019-O.webp",
+      "descripcion": "Killer Instinct: Definitive Edition, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 31,
+      "codigo": "XB1-005",
+      "nombre": "Quantum Break",
+      "categoriaId": 6,
+      "precio": 19990,
+      "precioOferta": 9990,
+      "stock": 6,
+      "stockCritico": 3,
+      "activo": true,
+      "imagen": "https://images.kabum.com.br/produtos/fotos/sync_mirakl/390593/xlarge/Game-Microsoft-Xbox-One-Quantum-Break_1738690341.jpg",
+      "descripcion": "Quantum Break, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 32,
+      "codigo": "XBS-001",
+      "nombre": "Indiana Jones and the Great Circle",
+      "categoriaId": 7,
+      "precio": 69990,
+      "precioOferta": null,
+      "stock": 9,
+      "stockCritico": 3,
+      "activo": true,
+      "imagen": "https://http2.mlstatic.com/D_NQ_NP_786133-CBT113311906107_062026-O.webp",
+      "descripcion": "Indiana Jones and the Great Circle, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 33,
+      "codigo": "XBS-002",
+      "nombre": "Starfield",
+      "categoriaId": 7,
+      "precio": 59990,
+      "precioOferta": 39990,
+      "stock": 7,
+      "stockCritico": 3,
+      "activo": true,
+      "imagen": "https://i5.walmartimages.cl/asr/444d8232-2b3f-48a8-b765-4bedc88cedd6.2f06d0ade5c1a76ebfc92d350b00c496.jpeg",
+      "descripcion": "Starfield, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 34,
+      "codigo": "XBS-003",
+      "nombre": "Alan Wake 2",
+      "categoriaId": 7,
+      "precio": 59990,
+      "precioOferta": null,
+      "stock": 8,
+      "stockCritico": 3,
+      "activo": true,
+      "imagen": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqZ8-yBCcy-vofvdae5BdNvYHQ6M9zmX9T8jYwNuNqMw&s=10",
+      "descripcion": "Alan Wake 2, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 35,
+      "codigo": "XBS-004",
+      "nombre": "Forza Motorsport",
+      "categoriaId": 7,
+      "precio": 49990,
+      "precioOferta": null,
+      "stock": 6,
+      "stockCritico": 3,
+      "activo": true,
+      "imagen": "https://media.spdigital.cl/thumbnails/products/ed7kdhfu_77ce63a0_thumbnail_4096.png",
+      "descripcion": "Forza Motorsport, producto original y sellado con garantía ZonaRatona."
+    },
+    {
+      "id": 36,
+      "codigo": "XBS-005",
+      "nombre": "DOOM: The Dark Ages",
+      "categoriaId": 7,
+      "precio": 69990,
+      "precioOferta": null,
+      "stock": 10,
+      "stockCritico": 3,
+      "activo": true,
+      "imagen": "https://http2.mlstatic.com/D_NQ_NP_828922-CBT91089005957_082025-O.webp",
+      "descripcion": "DOOM: The Dark Ages, producto original y sellado con garantía ZonaRatona."
+    }
+  ],
+  "usuarios": [
+    {
+      "id": 1,
+      "usuario": "admin",
+      "nombre": "Fabian",
+      "apellidos": "Grez",
+      "email": "fabian@correo.cl",
+      "clave": "Admin123",
+      "rol": "admin",
+      "activo": true,
+      "telefono": "+56911111111",
+      "fechaRegistro": "2026-03-01",
+      "direccion": {
+        "calle": "Av. Providencia 1234",
+        "departamento": "",
+        "region": "Región Metropolitana de Santiago",
+        "comuna": "Providencia",
+        "indicaciones": ""
+      }
+    },
+    {
+      "id": 2,
+      "usuario": "lvial",
+      "nombre": "Lucas",
+      "apellidos": "Gajardo",
+      "email": "lucas@correo.cl",
+      "clave": "User123",
+      "rol": "user",
+      "activo": true,
+      "telefono": "+56922222222",
+      "fechaRegistro": "2026-05-14",
+      "direccion": {
+        "calle": "Los Crisantemos 450, Edificio Norte",
+        "departamento": "Depto 603",
+        "region": "Región Metropolitana de Santiago",
+        "comuna": "Cerrillos",
+        "indicaciones": "Dejar con el conserje."
+      }
+    },
+    {
+      "id": 3,
+      "usuario": "cmunoz",
+      "nombre": "Camila",
+      "apellidos": "Muñoz",
+      "email": "camila@correo.cl",
+      "clave": "User123",
+      "rol": "user",
+      "activo": true,
+      "telefono": "+56933333333",
+      "fechaRegistro": "2026-10-20",
+      "direccion": {
+        "calle": "Calle Valparaíso 980",
+        "departamento": "",
+        "region": "Región de Valparaíso",
+        "comuna": "Viña del Mar",
+        "indicaciones": ""
+      }
+    },
+    {
+      "id": 4,
+      "usuario": "jperez",
+      "nombre": "Juan",
+      "apellidos": "Pérez",
+      "email": "juan@correo.cl",
+      "clave": "User123",
+      "rol": "user",
+      "activo": false,
+      "telefono": "",
+      "fechaRegistro": "2026-07-02",
+      "direccion": {
+        "calle": "",
+        "departamento": "",
+        "region": "",
+        "comuna": "",
+        "indicaciones": ""
+      }
+    },
+    {
+      "usuario": "Maxchan",
+      "nombre": "Maxi",
+      "apellidos": "Chandía",
+      "email": "max_chandia@gmail.com",
+      "telefono": "+56969696969",
+      "rol": "user",
+      "activo": true,
+      "direccion": {
+        "calle": "Avenida Mi Corazon 69",
+        "departamento": "",
+        "region": "Región Metropolitana de Santiago",
+        "comuna": "Lo Espejo",
+        "indicaciones": ""
+      },
+      "clave": "Maxito69",
+      "fechaRegistro": "2026-11-07",
+      "id": 5
+    }
+  ],
+  "ordenes": [
+    {
+      "id": 1,
+      "numero": "20260915001",
+      "codigo": "ORDER00001",
+      "fecha": "2026-09-15T14:20:00.000Z",
+      "usuarioId": 2,
+      "estado": "pagada",
+      "cliente": {
+        "nombre": "Lucas",
+        "apellidos": "Gajardo",
+        "email": "lucas@correo.cl"
+      },
+      "direccion": {
+        "calle": "Los Crisantemos 450, Edificio Norte",
+        "departamento": "Depto 603",
+        "region": "Región Metropolitana de Santiago",
+        "comuna": "Cerrillos",
+        "indicaciones": ""
+      },
+      "entrega": "domicilio",
+      "costoEnvio": 3990,
+      "metodoPago": "Tarjeta terminada en 4242",
+      "motivo": "",
+      "items": [
+        {
+          "productoId": 10,
+          "nombre": "God of War Ragnarok",
+          "precio": 59990,
+          "cantidad": 1,
+          "imagen": "https://media.falabella.com/falabellaCL/16570989_2/w=1200,h=1400,fit=cover"
+        },
+        {
+          "productoId": 14,
+          "nombre": "The Witcher 3: Wild Hunt",
+          "precio": 29990,
+          "cantidad": 2,
+          "imagen": "https://http2.mlstatic.com/D_NQ_NP_634099-MLA99944984211_112025-O.webp"
+        }
+      ],
+      "total": 123960
+    },
+    {
+      "id": 2,
+      "numero": "20261002002",
+      "codigo": "ORDER00002",
+      "fecha": "2026-10-02T18:05:00.000Z",
+      "usuarioId": 3,
+      "estado": "pagada",
+      "cliente": {
+        "nombre": "Camila",
+        "apellidos": "Muñoz",
+        "email": "camila@correo.cl"
+      },
+      "direccion": {
+        "calle": "Calle Valparaíso 980",
+        "departamento": "",
+        "region": "Región de Valparaíso",
+        "comuna": "Viña del Mar",
+        "indicaciones": ""
+      },
+      "entrega": "domicilio",
+      "costoEnvio": 3990,
+      "metodoPago": "Tarjeta terminada en 1111",
+      "motivo": "",
+      "items": [
+        {
+          "productoId": 6,
+          "nombre": "Nintendo Switch 2",
+          "precio": 629990,
+          "cantidad": 1,
+          "imagen": "https://www.weplay.cl/pub/media/catalog/product/cache/3f1b140c3c9f36fbf6b01dffb521c246/1/_/1_1745414561000.jpg"
+        },
+        {
+          "productoId": 17,
+          "nombre": "Mario Kart World",
+          "precio": 89990,
+          "cantidad": 1,
+          "imagen": "https://www.weplay.cl/pub/media/catalog/product/cache/3f1b140c3c9f36fbf6b01dffb521c246/0/4/0454969054538.jpeg"
+        }
+      ],
+      "total": 723970
+    },
+    {
+      "id": 3,
+      "numero": "20261021003",
+      "codigo": "ORDER00003",
+      "fecha": "2026-10-21T12:40:00.000Z",
+      "usuarioId": null,
+      "estado": "rechazada",
+      "cliente": {
+        "nombre": "Pedro",
+        "apellidos": "Soto",
+        "email": "pedro@example.com"
+      },
+      "direccion": {
+        "calle": "Av. Matta 300",
+        "departamento": "",
+        "region": "Región Metropolitana de Santiago",
+        "comuna": "Santiago",
+        "indicaciones": ""
+      },
+      "entrega": "retiro",
+      "costoEnvio": 0,
+      "metodoPago": "Tarjeta terminada en 0002",
+      "motivo": "Tarjeta rechazada por el banco emisor.",
+      "items": [
+        {
+          "productoId": 1,
+          "nombre": "PlayStation 5 Slim",
+          "precio": 749990,
+          "cantidad": 1,
+          "imagen": "https://www.weplay.cl/pub/media/catalog/product/cache/3f1b140c3c9f36fbf6b01dffb521c246/4/9/49488724159340.jpeg"
+        }
+      ],
+      "total": 749990
+    },
+    {
+      "id": 4,
+      "numero": "20261103004",
+      "codigo": "ORDER00004",
+      "fecha": "2026-11-03T21:10:00.000Z",
+      "usuarioId": 2,
+      "estado": "pagada",
+      "cliente": {
+        "nombre": "Lucas",
+        "apellidos": "Gajardo",
+        "email": "lucas@correo.cl"
+      },
+      "direccion": {
+        "calle": "Los Crisantemos 450, Edificio Norte",
+        "departamento": "Depto 603",
+        "region": "Región Metropolitana de Santiago",
+        "comuna": "Cerrillos",
+        "indicaciones": ""
+      },
+      "entrega": "retiro",
+      "costoEnvio": 0,
+      "metodoPago": "Tarjeta terminada en 4242",
+      "motivo": "",
+      "items": [
+        {
+          "productoId": 32,
+          "nombre": "Indiana Jones and the Great Circle",
+          "precio": 69990,
+          "cantidad": 1,
+          "imagen": "https://http2.mlstatic.com/D_NQ_NP_786133-CBT113311906107_062026-O.webp"
+        },
+        {
+          "productoId": 27,
+          "nombre": "Red Dead Redemption 2",
+          "precio": 19990,
+          "cantidad": 1,
+          "imagen": "https://media.falabella.com/falabellaCL/112637354_01/w=800,h=800,fit=pad"
+        }
+      ],
+      "total": 89980
+    },
+    {
+      "fecha": "2026-11-07T22:24:48.324Z",
+      "usuarioId": 5,
+      "estado": "pagada",
+      "motivo": "",
+      "cliente": {
+        "nombre": "Maxi",
+        "apellidos": "Chandía",
+        "email": "max_chandia@gmail.com"
+      },
+      "direccion": {
+        "calle": "Avenida Mi Corazon 69",
+        "departamento": "",
+        "region": "Región Metropolitana de Santiago",
+        "comuna": "Lo Espejo",
+        "indicaciones": "Entre Tongoy y Los Vilos"
+      },
+      "entrega": "domicilio",
+      "costoEnvio": 3990,
+      "metodoPago": "Tarjeta terminada en 4242",
+      "items": [
+        {
+          "productoId": 6,
+          "nombre": "Nintendo Switch 2",
+          "imagen": "https://www.weplay.cl/pub/media/catalog/product/cache/3f1b140c3c9f36fbf6b01dffb521c246/1/_/1_1745414561000.jpg",
+          "precio": 629990,
+          "cantidad": 1
+        }
+      ],
+      "total": 633980,
+      "id": 5,
+      "numero": "20261107005",
+      "codigo": "ORDER00005"
+    }
+  ],
+  "mensajes": [],
+  "carritos": [
+    {
+      "id": 5,
+      "items": [
+        {
+          "productoId": 6,
+          "cantidad": 1
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "items": []
+    }
+  ]
+}

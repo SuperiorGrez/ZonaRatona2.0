@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Productos | ZonaRatona</title>
+  
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <style>
+    :root{
+      --zmart-amarillo: #FFC600;
+      --zmart-amarillo-oscuro: #E6B200;
+      --zmart-amarillo-claro:  #FFC600;
+      --zmart-negro: #111111;
+    }
+
+    body {
+      font-family: 'Rajdhani', sans-serif;
+    }
+
+   
+    .navbar-zmart{
+      background-color: var(--zmart-negro) !important;
+      border-bottom: 3px solid var(--zmart-amarillo);
+    }
+    .navbar-zmart .navbar-brand{
+      color: var(--zmart-amarillo) !important;
+      font-weight: 800;
+      letter-spacing: .5px;
+    }
+    
+   
+    .nav-link.active {
+      color: var(--zmart-amarillo-claro) !important;
+      font-weight: 700;
+      text-shadow: 0 0 8px rgba(255, 230, 102, 0.4);
+    }
+
+    .navbar-zmart .text-secondary{
+      color: #d9d9d9 !important;
+    }
+    
+
+    .btn-primary, .btn-success {
+      --bs-btn-bg: var(--zmart-amarillo);
+      --bs-btn-border-color: var(--zmart-amarillo);
+      --bs-btn-color: var(--zmart-negro);
+      --bs-btn-hover-bg: var(--zmart-amarillo-oscuro);
+      --bs-btn-hover-border-color: var(--zmart-amarillo-oscuro);
+      --bs-btn-hover-color: var(--zmart-negro);
+      font-weight: 700;
+    }
+    
+    .badge.text-bg-primary{
+      background-color: var(--zmart-amarillo) !important;
+      color: var(--zmart-negro) !important;
+    }
+
+  
+    body.fondo-gamer{
+      background-image:
+        linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)),
+        url("https://wallpapers.com/images/hd/video-games-zoom-background-ux0skf8nbnx9xzen.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      }
+
+  
+    .banner-busqueda{
+      background-color: var(--zmart-amarillo);
+      border-radius: .5rem;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body class="fondo-gamer d-flex flex-column min-vh-100">
+
+
+  <nav class="navbar navbar-expand-lg navbar-zmart sticky-top">
+    <div class="container">
+      <a class="navbar-brand fs-4" href="index.html">
+        <i class="bi bi-controller me-2"></i>ZonaRatona
+      </a>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link text-white fw-semibold" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+
+            <a class="nav-link active" href="productos.html">Ir al Catálogo</a>
+          </li>
+        </ul>
+
+
+        <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+          <span class="small text-white fw-semibold" id="navUsuario"></span>
+          <button class="btn btn-primary btn-sm position-relative fw-bold text-dark" id="btnAbrirCarrito"
+                  data-bs-toggle="offcanvas" data-bs-target="#panelCarrito">
+            <i class="bi bi-cart3"></i> Carrito
+            <span class="badge rounded-pill bg-danger position-absolute top-0 start-100 translate-middle text-white" id="badgeCarrito">0</span>
+          </button>
+          <button class="btn btn-danger btn-sm text-white fw-bold" id="btnSalir">Cerrar sesión</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-4 flex-grow-1">
+
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3">
+      <div>
+
+        <h1 class="h2 mb-0 text-white fw-bold" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.8);">Catálogo de Productos</h1>
+        <p class="text-white small mb-0 fw-semibold" id="subtitulo" style="text-shadow: 1px 1px 2px rgba(0,0,0,0.8);"></p>
+      </div>
+      <button class="btn btn-primary d-none fw-bold" id="btnNuevo">Nuevo producto</button>
+    </div>
+
+  
+    <div class="banner-busqueda mb-4 shadow">
+      <div class="row g-2">
+        <div class="col-sm-7">
+          <input type="search" class="form-control fw-semibold" id="buscador" maxlength="60"
+                placeholder="Buscar por nombre, código o categoría">
+        </div>
+        <div class="col-sm-5">
+          <select class="form-select fw-semibold" id="filtroCategoria">
+            <option value="">Todas las categorías</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div id="aviso" class="alert d-none"></div>
+
+
+    <div class="card mb-4 d-none border-0 shadow" id="panelForm" style="background-color: #fff; color: #111;">
+
+      <div class="card-body p-4">
+        <h2 class="h4 card-title fw-bold" id="tituloForm">Nuevo producto</h2>
+        <div id="errorForm" class="alert alert-danger d-none"></div>
+        <input type="hidden" id="prodId">
+        <div class="row g-3 fw-semibold">
+          <div class="col-md-3"><label class="form-label">Código</label><input type="text" class="form-control" id="prodCodigo"></div>
+          <div class="col-md-5"><label class="form-label">Nombre</label><input type="text" class="form-control" id="prodNombre"></div>
+          <div class="col-md-4"><label class="form-label">Categoría</label><input type="text" class="form-control" id="prodCategoria" list="sugerencias"><datalist id="sugerencias"></datalist></div>
+          <div class="col-md-6"><label class="form-label">URL de la imagen</label><input type="url" class="form-control" id="prodImagen"></div>
+          <div class="col-md-3"><label class="form-label">Precio</label><input type="number" class="form-control" id="prodPrecio"></div>
+          <div class="col-md-3"><label class="form-label">Stock</label><input type="number" class="form-control" id="prodStock"></div>
+          <div class="col-md-6 d-flex align-items-end">
+            <div class="form-check"><input class="form-check-input" type="checkbox" id="prodActivo" checked><label class="form-check-label">Producto activo</label></div>
+          </div>
+        </div>
+        <div class="mt-4 d-flex gap-2">
+          <button type="button" class="btn btn-primary fw-bold text-dark" id="btnGuardar">Guardar producto</button>
+          <button type="button" class="btn btn-outline-secondary fw-bold" id="btnCancelar">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row g-3" id="cuadriculaProductos"></div>
+
+  </main>
+
+  <div class="offcanvas offcanvas-end text-bg-dark border-secondary" tabindex="-1" id="panelCarrito">
+
+    <div class="offcanvas-header border-bottom border-secondary">
+      <h2 class="offcanvas-title h4 fw-bold">Tu carrito</h2>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column">
+      <p class="small text-secondary mb-3 fw-semibold">Límite: 2 unidades por cada consola y 3 unidades por cada juego.</p>
+      <div id="listaCarrito" class="flex-grow-1"></div>
+      <div class="border-top border-secondary pt-3 mt-3">
+        <div class="d-flex justify-content-between fw-bold fs-5 mb-3"><span>Total</span><span id="totalCarrito" style="color:var(--zmart-amarillo)">$0</span></div>
+        <div class="d-grid gap-2">
+          <button class="btn btn-primary fw-bold text-dark" id="btnFinalizarCompra">Finalizar compra</button>
+          <button class="btn btn-danger btn-sm fw-bold text-white" id="btnVaciarCarrito">Vaciar carrito</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <footer class="bg-dark border-top border-secondary-subtle py-4 mt-auto">
+    <div class="container text-center text-secondary small fw-semibold">
+      <p class="mb-1">© 2026 ZonaRatona SpA — Venta de videjuegos y consolas.</p>
+      <p class="mb-0">Proyecto formativo de desarrollo Web.</p>
+    </div>
+  </footer>
+
+<script>
+
+  const SEED_PRODUCTOS = [
+    {id:1, codigo:"PS-001", nombre:"PlayStation 5 Slim", categoria:"Consolas", precio:749990, stock:5, activo:true, imagen: "https://www.weplay.cl/pub/media/catalog/product/cache/3f1b140c3c9f36fbf6b01dffb521c246/4/9/49488724159340.jpeg"},
+    {id:2, codigo:"XB-001", nombre:"Xbox Series X", categoria:"Consolas", precio:669990, stock:6, activo:true, imagen: "https://i5.walmartimages.com/seo/Microsoft-Xbox-Series-X-1TB-SSD-Gaming-Console_7731b7a3-2b2c-4cdd-b79a-56958896fc7c.7579fef99ebf8da06c02e6a2ecb62f4f.jpeg"},
+    {id:3, codigo:"PS-002", nombre:"PlayStation 4 Slim 1 TB", categoria:"Consolas", precio:329990, stock:4, activo:true, imagen: "https://assets.pcfactory.cl/public/foto/31328/2_500.jpg"},
+    {id:4, codigo:"XB-002", nombre:"Xbox One", categoria:"Consolas", precio:199990, stock:2, activo:true, imagen: "https://assets.pcfactory.cl/public/foto/27096/1_500.jpg"},
+    {id:5, codigo:"NS-001", nombre:"Nintendo Switch", categoria:"Consolas", precio:299990, stock:5, activo:true, imagen: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcS5Mp6R1QkKQu2T3vpjAKv5_8j4zk8NQUJ_NG2i0j_qPVX-LVTByKnIaT-lCz0HccrWku744lTJk6QgkCyY-nLa-VuhSXb4YmdolzVhjk1N2xboDpOOGbWfiXA"},
+    {id:6, codigo:"NS2-001", nombre:"Nintendo Switch 2", categoria:"Consolas", precio:629990, stock:5, activo:true, imagen: "https://www.weplay.cl/pub/media/catalog/product/cache/3f1b140c3c9f36fbf6b01dffb521c246/1/_/1_1745414561000.jpg"},
+    {id:7, codigo:"PS5-001", nombre:"Astro Bot", categoria:"PlayStation 5", precio:69990, stock:0, activo:true, imagen: "https://i5.walmartimages.cl/asr/3613f1ca-5850-4706-81a1-2a2ae64556d6.a611ee2af1d1b79dea0072e6d2082036.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF"},
+    {id:8, codigo:"PS5-002", nombre:"Stellar Blade", categoria:"PlayStation 5", precio:69990, stock:9, activo:true, imagen: "https://clsonyb2c.vtexassets.com/arquivos/ids/463769/ps5-STELLAR-BLADE-packshot-2.jpg?v=638948488303730000"},
+    {id:9, codigo:"PS5-003", nombre:"Death Stranding 2: On the Beach", categoria:"PlayStation 5", precio:79990, stock:9, activo:true, imagen: "https://clsonyb2c.vtexassets.com/arquivos/ids/467668/PS5-Death-Stranding-2-2.jpg?v=638859136791230000"},
+    {id:10, codigo:"PS5-004", nombre:"God of War Ragnarok", categoria:"PlayStation 5", precio:59990, stock:14, activo:true, imagen: "https://media.falabella.com/falabellaCL/16570989_2/w=1200,h=1400,fit=cover"},
+    {id:11, codigo:"PS5-005", nombre:"Final Fantasy VII Rebirth", categoria:"PlayStation 5", precio:69990, stock:11, activo:true, imagen: "https://http2.mlstatic.com/D_NQ_NP_644247-MLA92112450946_092025-O-final-fantasy-vii-rebirth-ps5-fisico.webp"},
+    {id:12, codigo:"PS4-001", nombre:"Resident Evil 4", categoria:"PlayStation 4", precio:39990, stock:9, activo:true, imagen: "https://http2.mlstatic.com/D_NQ_NP_718660-MLA99509627130_112025-O.webp"},
+    {id:13, codigo:"PS4-002", nombre:"Persona 5 Royal", categoria:"PlayStation 4", precio:29990, stock:7, activo:true, imagen: "https://http2.mlstatic.com/D_NQ_NP_827924-MLA112166427728_062026-O.webp"},
+    {id:14, codigo:"PS4-003", nombre:"The Witcher 3: Wild Hunt", categoria:"PlayStation 4", precio:29990, stock:12, activo:true, imagen: "https://http2.mlstatic.com/D_NQ_NP_634099-MLA99944984211_112025-O.webp"},
+    {id:15, codigo:"PS4-004", nombre:"God of War", categoria:"PlayStation 4", precio:39990, stock:6, activo:true, imagen: "https://http2.mlstatic.com/D_Q_NP_2X_806222-MLA100000148187_112025-P.webp"},
+    {id:16, codigo:"PS4-005", nombre:"Sekiro: Shadows Die Twice", categoria:"PlayStation 4", precio:44990, stock:5, activo:true, imagen: "https://http2.mlstatic.com/D_NQ_NP_783138-CBT112456917803_052026-O.webp"},
+    {id:17, codigo:"NS2-002", nombre:"Mario Kart World", categoria:"Nintendo Switch 2", precio:89990, stock:9, activo:true, imagen: "https://www.weplay.cl/pub/media/catalog/product/cache/3f1b140c3c9f36fbf6b01dffb521c246/0/4/0454969054538.jpeg"},
+    {id:18, codigo:"NS2-003", nombre:"Donkey Kong Bananza", categoria:"Nintendo Switch 2", precio:72990, stock:0, activo:true, imagen: "https://www.weplay.cl/pub/media/catalog/product/cache/3f1b140c3c9f36fbf6b01dffb521c246/0/4/045496905576-00.jpg"},
+    {id:19, codigo:"NS2-004", nombre:"Cyberpunk 2077: Ultimate Edition", categoria:"Nintendo Switch 2", precio:69990, stock:6, activo:true, imagen: "https://media.falabella.com/falabellaCL/144628795_01/w=1004,h=1500,fit=pad"},
+    {id:20, codigo:"NS2-005", nombre:"Hogwarts Legacy - Switch 2 Edition", categoria:"Nintendo Switch 2", precio:59990, stock:8, activo:true, imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj73At05bYckHuJCOoeRidVqwdMEDRsfzwBa_ipNUWsn747TC9vIU6oeg&s=10"},
+    {id:21, codigo:"NS2-006", nombre:"The Legend of Zelda: Breath of the Wild - Switch 2 Edition", categoria:"Nintendo Switch 2", precio:89990, stock:7, activo:true, imagen: "https://www.weplay.cl/pub/media/catalog/product/cache/3f1b140c3c9f36fbf6b01dffb521c246/0/4/0454969057746.jpeg"},
+    {id:22, codigo:"NS-002", nombre:"The Legend of Zelda: Tears of the Kingdom", categoria:"Nintendo Switch", precio:69990, stock:9, activo:true, imagen: "https://http2.mlstatic.com/D_NQ_NP_902828-MLA99452754962_112025-O.webp"},
+    {id:23, codigo:"NS-003", nombre:"Super Mario Bros. Wonder", categoria:"Nintendo Switch", precio:59990, stock:10, activo:true, imagen: "https://i5.walmartimages.cl/asr/8d62e5f6-3f4b-42e3-baf6-1373f7382f58.717214b0c3bcaee35c73da7123666b86.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF"},
+    {id:24, codigo:"NS-004", nombre:"Metroid Prime Remastered", categoria:"Nintendo Switch", precio:54990, stock:7, activo:true, imagen: "https://rimage.ripley.cl/home.ripley/Attachment/MKP/4354/MPM10003087066/full_image-1"},
+    {id:25, codigo:"NS-005", nombre:"Xenoblade Chronicles 3", categoria:"Nintendo Switch", precio:59990, stock:6, activo:true, imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmHy9dYZ1j2C8Zppay886EQ-clV-CIsf-bULI-H-P9rSjxxtX1Ni7nLpw&s=10"},
+    {id:26, codigo:"NS-006", nombre:"Luigi's Mansion 3", categoria:"Nintendo Switch", precio:59990, stock:8, activo:true, imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6X1GX6pSiORoPEnf_0GXLp7E6P2DqAJgldB_qVBZf0Z7xrBBTupJXRQw_&s=10"},
+    {id:27, codigo:"XB1-001", nombre:"Red Dead Redemption 2", categoria:"Xbox One", precio:29990, stock:9, activo:true, imagen: "https://media.falabella.com/falabellaCL/112637354_01/w=800,h=800,fit=pad"},
+    {id:28, codigo:"XB1-002", nombre:"Resident Evil 2", categoria:"Xbox One", precio:29990, stock:7, activo:true, imagen: "https://http2.mlstatic.com/D_NQ_NP_913835-MLA99930564331_112025-O.webp"},
+    {id:29, codigo:"XB1-003", nombre:"Middle-earth: Shadow of War", categoria:"Xbox One", precio:24990, stock:8, activo:true, imagen: "https://cashatmaxx.co.uk/cdn/shop/files/Untitled_8689858a-5073-42d3-8d4b-74d01cdb1c0c.png?v=1725979691"},
+    {id:30, codigo:"XB1-004", nombre:"Killer Instinct: Definitive Edition", categoria:"Xbox One", precio:29990, stock:5, activo:true, imagen: "https://http2.mlstatic.com/D_NQ_NP_669530-MLC31878814679_082019-O.webp"},
+    {id:31, codigo:"XB1-005", nombre:"Quantum Break", categoria:"Xbox One", precio:19990, stock:6, activo:true, imagen: "https://images.kabum.com.br/produtos/fotos/sync_mirakl/390593/xlarge/Game-Microsoft-Xbox-One-Quantum-Break_1738690341.jpg"},
+    {id:32, codigo:"XBS-001", nombre:"Indiana Jones and the Great Circle", categoria:"Xbox Series S/X", precio:69990, stock:9, activo:true, imagen: "https://http2.mlstatic.com/D_NQ_NP_786133-CBT113311906107_062026-O.webp"},
+    {id:33, codigo:"XBS-002", nombre:"Starfield", categoria:"Xbox Series S/X", precio:59990, stock:7, activo:true, imagen: "https://i5.walmartimages.cl/asr/444d8232-2b3f-48a8-b765-4bedc88cedd6.2f06d0ade5c1a76ebfc92d350b00c496.jpeg"},
+    {id:34, codigo:"XBS-003", nombre:"Alan Wake 2", categoria:"Xbox Series S/X", precio:59990, stock:8, activo:true, imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqZ8-yBCcy-vofvdae5BdNvYHQ6M9zmX9T8jYwNuNqMw&s=10"},
+    {id:35, codigo:"XBS-004", nombre:"Forza Motorsport", categoria:"Xbox Series S/X", precio:49990, stock:6, activo:true, imagen: "https://media.spdigital.cl/thumbnails/products/ed7kdhfu_77ce63a0_thumbnail_4096.png"},
+    {id:36, codigo:"XBS-005", nombre:"DOOM: The Dark Ages", categoria:"Xbox Series S/X", precio:69990, stock:10, activo:true, imagen: "https://http2.mlstatic.com/D_NQ_NP_828922-CBT91089005957_082025-O.webp" }
+  ];
+
+  const KEY_SESION = "inv_sesion";
+  const KEY_PRODUCTOS = "inv_productos";
+
+  const LIMITE_CONSOLA = 2;
+  const LIMITE_JUEGO = 3;
+
+  let productos = [];
+  let esAdmin = false;
+  let carrito = [];
+  let KEY_CARRITO = "";
+
+
+  function cerrarFormulario() {
+    document.getElementById("panelForm").classList.add("d-none");
+    document.getElementById("errorForm").classList.add("d-none");
+  }
+
+
+  function limpiarFormulario() {
+    document.getElementById("prodId").value = "";
+    document.getElementById("prodCodigo").value = "";
+    document.getElementById("prodNombre").value = "";
+    document.getElementById("prodCategoria").value = "";
+    document.getElementById("prodPrecio").value = "";
+    document.getElementById("prodStock").value = "";
+    document.getElementById("prodImagen").value = "";
+    document.getElementById("prodActivo").checked = true;
+    document.getElementById("errorForm").classList.add("d-none");
+  }
+
+  function siguienteId() {
+    let mayor = 0;
+
+    for (let i = 0; i < productos.length; i++) {
+      if (productos[i].id > mayor) {
+        mayor = productos[i].id;
+      }
+    }
+    return mayor + 1;
+  }
+
+
+  const sesion = leerSesion();
+
+  if (!sesion) {
+    window.location.replace("login.html");
+  } else {
+    esAdmin = sesion.rol === "admin";
+
+    document.getElementById("navUsuario").textContent = "Hola, " + sesion.usuario;
+
+    if (esAdmin) {
+      document.getElementById("subtitulo").textContent =
+        "Puedes crear, editar y eliminar productos.";
+      document.getElementById("btnNuevo").classList.remove("d-none");
+    } else {
+      document.getElementById("subtitulo").textContent =
+        "Explora nuestro inventario y añade lo que necesites a tu carrito.";
+    }
+
+    productos = cargarProductos();
+    llenarCategorias();
+
+
+    KEY_CARRITO = "inv_carrito_" + sesion.usuario;
+    carrito = cargarCarrito();
+
+
+    const parametrosURL = new URLSearchParams(window.location.search);
+
+    if (parametrosURL.has("buscar")) {
+      document.getElementById("buscador").value =
+        parametrosURL.get("buscar");
+    }
+
+    pintarCuadricula();
+    pintarCarrito();
+
+
+    document.getElementById("btnSalir").addEventListener("click", cerrarSesion);
+    document.getElementById("buscador").addEventListener("input", pintarCuadricula);
+    document.getElementById("filtroCategoria").addEventListener("change", pintarCuadricula);
+    document.getElementById("btnNuevo").addEventListener("click", nuevoProducto);
+    document.getElementById("btnGuardar").addEventListener("click", guardarProducto);
+    document.getElementById("btnCancelar").addEventListener("click", cerrarFormulario);
+    document.getElementById("btnVaciarCarrito").addEventListener("click", vaciarCarrito);
+    document.getElementById("btnFinalizarCompra").addEventListener("click", finalizarCompra);
+
+    document.getElementById("prodPrecio").addEventListener("input", function () {
+      if (this.validity.badInput) {
+        mostrarError("El precio debe contener solo números");
+      }
+    });
+
+    document.getElementById("prodStock").addEventListener("input", function () {
+      if (this.validity.badInput) {
+        mostrarError("El stock debe contener solo números");
+      }
+    });
+  }
+
+
+  function leerSesion() {
+    try {
+      const texto = sessionStorage.getItem(KEY_SESION);
+
+      if (!texto) {
+        return null;
+      }
+
+      const sesion = JSON.parse(texto);
+
+      if (!sesion.usuario || !sesion.rol) {
+        return null;
+      }
+
+      if (sesion.expire && Date.now() > sesion.expire) {
+        sessionStorage.removeItem(KEY_SESION);
+        return null;
+      }
+
+      return sesion;
+    } catch (error) {
+      return null;
+    }
+  }
+
+
+  function cerrarSesion() {
+    sessionStorage.removeItem(KEY_SESION);
+    window.location.replace("login.html");
+  }
+
+  function cargarProductos() {
+    const guardados = localStorage.getItem(KEY_PRODUCTOS);
+
+    if (guardados) {
+      return JSON.parse(guardados);
+    }
+
+    localStorage.setItem(KEY_PRODUCTOS, JSON.stringify(SEED_PRODUCTOS));
+
+
+    return SEED_PRODUCTOS.slice();
+  }
+
+
+  function guardarProductos() {
+    localStorage.setItem(KEY_PRODUCTOS, JSON.stringify(productos));
+  }
+
+
+  function llenarCategorias() {
+    const select = document.getElementById("filtroCategoria");
+    const datalist = document.getElementById("sugerencias");
+
+
+    const seleccionada = select.value;
+
+    const categorias = [];
+
+  
+    for (let i = 0; i < productos.length; i++) {
+      const categoria = productos[i].categoria;
+
+   
+      if (categorias.indexOf(categoria) === -1) {
+        categorias.push(categoria);
+      }
+    }
+
+    categorias.sort();
+
+
+    select.innerHTML = '<option value="">Todas las categorías</option>';
+    datalist.innerHTML = "";
+
+
+    for (let i = 0; i < categorias.length; i++) {
+      const opcion = document.createElement("option");
+
+      opcion.value = categorias[i];
+      opcion.textContent = categorias[i];
+
+      select.appendChild(opcion);
+
+      const sugerencia = document.createElement("option");
+      sugerencia.value = categorias[i];
+
+      datalist.appendChild(sugerencia);
+    }
+
+
+    select.value = seleccionada;
+  }
+
+
+  function imagenProducto(producto) {
+    return "https://placehold.co/400x250/ffffff/000000?text=" +
+      encodeURIComponent(producto.codigo);
+  }
+
+
+
+  function pintarCuadricula() {
+    const contenedor = document.getElementById("cuadriculaProductos");
+    const buscador = document.getElementById("buscador");
+    const filtro = document.getElementById("filtroCategoria");
+
+    const textoBuscado = buscador.value.toLowerCase();
+    const categoriaBuscada = filtro.value;
+
+    contenedor.innerHTML = "";
+
+    let mostrados = 0;
+
+    for (let i = 0; i < productos.length; i++) {
+      const producto = productos[i];
+
+
+      const textoProducto =
+        (producto.codigo + " " +
+         producto.nombre + " " +
+         producto.categoria).toLowerCase();
+
+
+      let coincideTexto = false;
+
+      if (textoProducto.indexOf(textoBuscado) !== -1) {
+        coincideTexto = true;
+      }
+
+
+      let coincideCategoria = false;
+
+      if (categoriaBuscada === "" ||
+          producto.categoria === categoriaBuscada) {
+        coincideCategoria = true;
+      }
+
+
+      if (producto.stock <= 0 && !esAdmin) {
+        continue;
+      }
+
+
+      if (!coincideTexto || !coincideCategoria) {
+        continue;
+      }
+
+
+      const columna = document.createElement("div");
+      columna.className = "col-6 col-sm-4 col-md-3 col-xl-2";
+
+      const tarjeta = document.createElement("div");
+      tarjeta.className = "card h-100 shadow-sm bg-white text-dark border-0";
+
+      
+      const contenedorImagen = document.createElement("div");
+      contenedorImagen.style.backgroundColor = "#fff";
+      contenedorImagen.style.padding = "10px";
+      contenedorImagen.style.height = "160px";
+      contenedorImagen.className =
+        "d-flex align-items-center justify-content-center rounded-top border-bottom border-light";
+
+      const imagen = document.createElement("img");
+
+      if (producto.imagen && producto.imagen.trim() !== "") {
+        imagen.src = producto.imagen;
+      } else {
+        imagen.src = imagenProducto(producto);
+      }
+
+      imagen.alt = producto.nombre;
+      imagen.style.maxHeight = "100%";
+      imagen.style.maxWidth = "100%";
+      imagen.style.objectFit = "contain";
+
+      contenedorImagen.appendChild(imagen);
+      tarjeta.appendChild(contenedorImagen);
+
+
+      const cuerpo = document.createElement("div");
+      cuerpo.className = "card-body d-flex flex-column p-3 text-start";
+
+
+      const codigo = document.createElement("div");
+      codigo.className = "text-secondary small mb-1 fw-semibold";
+      codigo.style.fontSize = "0.75rem";
+      codigo.textContent = producto.codigo;
+      cuerpo.appendChild(codigo);
+
+ 
+      const nombre = document.createElement("h3");
+      nombre.className = "h6 card-title mb-2 text-truncate fw-bold";
+      nombre.style.fontSize = "1.05rem";
+      nombre.textContent = producto.nombre;
+      cuerpo.appendChild(nombre);
+
+  
+      const categoria = document.createElement("span");
+      categoria.className =
+        "badge text-bg-light border border-secondary mb-2 align-self-start text-dark fw-bold";
+      categoria.style.fontSize = "0.7rem";
+      categoria.textContent = producto.categoria;
+      cuerpo.appendChild(categoria);
+
+
+      const precio = document.createElement("div");
+      precio.className = "fw-bold fs-4 mb-0 text-dark";
+      precio.textContent =
+        "$" + producto.precio.toLocaleString("es-CL");
+      cuerpo.appendChild(precio);
+
+      const stock = document.createElement("div");
+      stock.className = "small text-secondary mb-3 fw-semibold";
+      stock.style.fontSize = "0.75rem";
+
+      if (producto.stock > 0) {
+        stock.textContent = "Stock: " + producto.stock + " · Disponible";
+      } else {
+        stock.textContent = "Stock: " + producto.stock + " · No disponible";
+      }
+
+      cuerpo.appendChild(stock);
+
+
+      const espacio = document.createElement("div");
+      espacio.className = "mt-auto";
+      cuerpo.appendChild(espacio);
+
+
+
+      const zonaCarrito = document.createElement("div");
+      zonaCarrito.className = "mt-2";
+
+      const cantidad = cantidadEnCarrito(producto.id);
+
+      if (!producto.activo || producto.stock <= 0) {
+
+        const boton = document.createElement("button");
+        boton.className = "btn btn-sm btn-secondary w-100 fw-bold";
+        boton.disabled = true;
+        boton.textContent = "Sin stock";
+
+        zonaCarrito.appendChild(boton);
+
+      } else if (cantidad === 0) {
+  
+        const boton = document.createElement("button");
+        boton.className = "btn btn-primary w-100 fw-bold text-dark";
+        boton.textContent = "Agregar al carrito";
+
+        boton.addEventListener("click", function () {
+          agregarAlCarrito(producto.id);
+        });
+
+        zonaCarrito.appendChild(boton);
+
+      } else {
+  
+        const controles = document.createElement("div");
+        controles.className =
+          "d-flex align-items-center justify-content-between border border-secondary rounded";
+
+       
+        const botonMenos = document.createElement("button");
+        botonMenos.className =
+          "btn btn-sm btn-light flex-fill p-1 border-0 fw-bold";
+        botonMenos.textContent = "−";
+
+        botonMenos.addEventListener("click", function () {
+          quitarUnaUnidad(producto.id);
+        });
+
+        controles.appendChild(botonMenos);
+
+        const textoCantidad = document.createElement("span");
+        textoCantidad.className = "px-3 small fw-bold fs-6";
+        textoCantidad.textContent = cantidad;
+        controles.appendChild(textoCantidad);
+
+   
+        const botonMas = document.createElement("button");
+        botonMas.className =
+          "btn btn-sm btn-light flex-fill p-1 border-0 fw-bold";
+
+        if (!puedeAgregarMas(producto)) {
+          botonMas.disabled = true;
+        }
+
+        botonMas.textContent = "+";
+
+        botonMas.addEventListener("click", function () {
+          agregarAlCarrito(producto.id);
+        });
+
+        controles.appendChild(botonMas);
+        zonaCarrito.appendChild(controles);
+
+
+        if (!puedeAgregarMas(producto)) {
+          const nota = document.createElement("div");
+          nota.className = "text-danger mt-1 fw-bold text-center";
+          nota.style.fontSize = "0.7rem";
+
+          if (producto.categoria === "Consolas") {
+            nota.textContent = "Límite: 2 unids.";
+          } else {
+            nota.textContent = "Límite: 3 unids.";
+          }
+
+          zonaCarrito.appendChild(nota);
+        }
+      }
+
+      cuerpo.appendChild(zonaCarrito);
+
+
+
+      if (esAdmin) {
+        const acciones = document.createElement("div");
+        acciones.className =
+          "d-flex gap-2 mt-3 pt-2 border-top border-light";
+
+        const botonEditar = document.createElement("button");
+        botonEditar.className =
+          "btn btn-sm btn-outline-primary flex-fill fw-bold";
+        botonEditar.textContent = "Editar";
+
+        botonEditar.addEventListener("click", function () {
+          editarProducto(producto.id);
+        });
+
+        const botonEliminar = document.createElement("button");
+        botonEliminar.className =
+          "btn btn-sm btn-outline-danger flex-fill fw-bold";
+        botonEliminar.textContent = "Eliminar";
+
+        botonEliminar.addEventListener("click", function () {
+          eliminarProducto(producto.id);
+        });
+
+        acciones.appendChild(botonEditar);
+        acciones.appendChild(botonEliminar);
+        cuerpo.appendChild(acciones);
+      }
+
+
+      tarjeta.appendChild(cuerpo);
+      columna.appendChild(tarjeta);
+      contenedor.appendChild(columna);
+
+      mostrados++;
+    }
+
+
+    if (mostrados === 0) {
+      const mensaje = document.createElement("div");
+      mensaje.className =
+        "col-12 text-center text-white py-4 fw-bold fs-5";
+      mensaje.style.textShadow = "1px 1px 3px rgba(0,0,0,0.8)";
+      mensaje.textContent =
+        "No hay productos que coincidan con la búsqueda.";
+
+      contenedor.appendChild(mensaje);
+    }
+  }
+
+
+  function mostrarAviso(mensaje, tipo) {
+    const aviso = document.getElementById("aviso");
+
+    aviso.className = "alert alert-" + tipo + " fw-bold";
+    aviso.textContent = mensaje;
+
+    setTimeout(function () {
+      aviso.classList.add("d-none");
+    }, 3000);
+  }
+
+ 
+  function mostrarError(mensaje) {
+    const error = document.getElementById("errorForm");
+
+    error.textContent = mensaje;
+    error.classList.remove("d-none");
+  }
+
+  function buscarProducto(id) {
+    for (let i = 0; i < productos.length; i++) {
+      if (productos[i].id === id) {
+        return productos[i];
+      }
+    }
+
+    return null;
+  }
+
+
+  function nuevoProducto() {
+    limpiarFormulario();
+
+    document.getElementById("tituloForm").textContent = "Nuevo Producto";
+    document.getElementById("panelForm").classList.remove("d-none");
+    document.getElementById("prodCodigo").focus();
+  }
+
+
+  function editarProducto(id) {
+    const producto = buscarProducto(id);
+
+    if (!producto) {
+      return;
+    }
+
+    limpiarFormulario();
+
+    document.getElementById("tituloForm").textContent =
+      "Editar un producto";
+
+    document.getElementById("prodId").value = producto.id;
+    document.getElementById("prodCodigo").value = producto.codigo;
+    document.getElementById("prodNombre").value = producto.nombre;
+    document.getElementById("prodCategoria").value = producto.categoria;
+    document.getElementById("prodPrecio").value = producto.precio;
+    document.getElementById("prodStock").value = producto.stock;
+    document.getElementById("prodActivo").checked = producto.activo;
+
+    if (producto.imagen) {
+      document.getElementById("prodImagen").value = producto.imagen;
+    }
+
+    document.getElementById("panelForm").classList.remove("d-none");
+    document.getElementById("prodNombre").focus();
+  }
+
+
+  function eliminarProducto(id) {
+    const producto = buscarProducto(id);
+
+    if (!producto) {
+      return;
+    }
+
+    const confirmar = confirm(
+      "¿Estás seguro de que deseas eliminar el producto '" +
+      producto.nombre + "'?"
+    );
+
+    if (!confirmar) {
+      return;
+    }
+
+    const nuevosProductos = [];
+
+    for (let i = 0; i < productos.length; i++) {
+      if (productos[i].id !== id) {
+        nuevosProductos.push(productos[i]);
+      }
+    }
+
+    productos = nuevosProductos;
+
+
+    const nuevoCarrito = [];
+
+    for (let i = 0; i < carrito.length; i++) {
+      if (carrito[i].id !== id) {
+        nuevoCarrito.push(carrito[i]);
+      }
+    }
+
+    carrito = nuevoCarrito;
+
+    guardarProductos();
+    guardarCarrito();
+
+    llenarCategorias();
+    pintarCuadricula();
+    pintarCarrito();
+
+    mostrarAviso("Producto eliminado completamente", "danger");
+  }
+
+
+  function guardarProducto() {
+    const id = document.getElementById("prodId").value;
+    const codigo = document.getElementById("prodCodigo").value.trim();
+    const nombre = document.getElementById("prodNombre").value.trim();
+    const categoria = document.getElementById("prodCategoria").value.trim();
+    const precio = document.getElementById("prodPrecio").value;
+    const stock = document.getElementById("prodStock").value;
+    const activo = document.getElementById("prodActivo").checked;
+    const imagen = document.getElementById("prodImagen").value.trim();
+
+  
+    if (codigo === "" || nombre === "" || categoria === "") {
+      mostrarError("Completa código, nombre y categoría");
+      return;
+    }
+
+    if (precio === "" || isNaN(Number(precio))) {
+      mostrarError("El precio debe ser un número");
+      return;
+    }
+
+    if (Number(precio) < 0) {
+      mostrarError("El precio no puede ser negativo");
+      return;
+    }
+
+    if (stock === "" || isNaN(Number(stock))) {
+      mostrarError("El stock debe ser un número");
+      return;
+    }
+
+    if (Number(stock) < 0) {
+      mostrarError("El stock no puede ser negativo");
+      return;
+    }
+
+
+    if (id === "") {
+      const nuevo = {
+        id: siguienteId(),
+        codigo: codigo,
+        nombre: nombre,
+        categoria: categoria,
+        precio: Number(precio),
+        stock: Number(stock),
+        activo: activo,
+        imagen: imagen
+      };
+
+      productos.push(nuevo);
+
+      mostrarAviso("Producto creado", "success");
+
+    } else {
+  
+      const producto = buscarProducto(Number(id));
+
+      if (producto) {
+        producto.codigo = codigo;
+        producto.nombre = nombre;
+        producto.categoria = categoria;
+        producto.precio = Number(precio);
+        producto.stock = Number(stock);
+        producto.activo = activo;
+        producto.imagen = imagen;
+
+        mostrarAviso("Producto actualizado", "success");
+      }
+    }
+
+    guardarProductos();
+    llenarCategorias();
+    pintarCuadricula();
+    cerrarFormulario();
+  }
+
+  function cargarCarrito() {
+    try {
+      const texto = localStorage.getItem(KEY_CARRITO);
+
+      if (!texto) {
+        return [];
+      }
+
+      const datos = JSON.parse(texto);
+
+      if (Array.isArray(datos)) {
+        return datos;
+      }
+
+      return [];
+    } catch (error) {
+      return [];
+    }
+  }
+
+  function guardarCarrito() {
+    localStorage.setItem(KEY_CARRITO, JSON.stringify(carrito));
+  }
+
+  function itemEnCarrito(id) {
+    for (let i = 0; i < carrito.length; i++) {
+      if (carrito[i].id === id) {
+        return carrito[i];
+      }
+    }
+
+    return null;
+  }
+
+
+  function cantidadEnCarrito(id) {
+    const item = itemEnCarrito(id);
+
+    if (item) {
+      return item.cantidad;
+    }
+
+    return 0;
+  }
+
+
+  function puedeAgregarMas(producto) {
+    if (!producto) {
+      return false;
+    }
+
+    if (!producto.activo) {
+      return false;
+    }
+
+    if (producto.stock <= 0) {
+      return false;
+    }
+
+    const cantidad = cantidadEnCarrito(producto.id);
+
+    if (cantidad >= producto.stock) {
+      return false;
+    }
+
+    let limite = LIMITE_JUEGO;
+
+    if (producto.categoria === "Consolas") {
+      limite = LIMITE_CONSOLA;
+    }
+
+    if (cantidad >= limite) {
+      return false;
+    }
+
+    return true;
+  }
+
+
+  function agregarAlCarrito(id) {
+    const producto = buscarProducto(id);
+
+    if (!puedeAgregarMas(producto)) {
+      return;
+    }
+
+    const item = itemEnCarrito(id);
+
+    if (item) {
+      item.cantidad = item.cantidad + 1;
+    } else {
+      carrito.push({
+        id: id,
+        cantidad: 1
+      });
+    }
+
+    guardarCarrito();
+    pintarCuadricula();
+    pintarCarrito();
+
+    mostrarAviso("Agregado al carrito", "success");
+  }
+
+
+  function quitarUnaUnidad(id) {
+    const item = itemEnCarrito(id);
+
+    if (!item) {
+      return;
+    }
+
+    item.cantidad = item.cantidad - 1;
+
+    if (item.cantidad <= 0) {
+      quitarDelCarrito(id);
+      return;
+    }
+
+    guardarCarrito();
+    pintarCuadricula();
+    pintarCarrito();
+  }
+
+
+  function quitarDelCarrito(id) {
+    const nuevoCarrito = [];
+
+    for (let i = 0; i < carrito.length; i++) {
+      if (carrito[i].id !== id) {
+        nuevoCarrito.push(carrito[i]);
+      }
+    }
+
+    carrito = nuevoCarrito;
+
+    guardarCarrito();
+    pintarCuadricula();
+    pintarCarrito();
+  }
+
+
+  function vaciarCarrito() {
+    if (carrito.length === 0) {
+      return;
+    }
+
+    if (!confirm("¿Vaciar todo el carrito?")) {
+      return;
+    }
+
+    carrito = [];
+
+    guardarCarrito();
+    pintarCuadricula();
+    pintarCarrito();
+  }
+
+
+  function finalizarCompra() {
+    if (carrito.length === 0) {
+      mostrarAviso("Tu carrito está vacío", "warning");
+      return;
+    }
+
+
+    for (let i = 0; i < carrito.length; i++) {
+      const item = carrito[i];
+      const producto = buscarProducto(item.id);
+
+      if (!producto || producto.stock < item.cantidad) {
+        let nombre = "un producto";
+
+        if (producto) {
+          nombre = producto.nombre;
+        }
+
+        mostrarAviso(
+          'El stock de "' + nombre +
+          '" cambió, revisa tu carrito.',
+          "danger"
+        );
+
+        return;
+      }
+    }
+
+  
+    for (let i = 0; i < carrito.length; i++) {
+      const item = carrito[i];
+      const producto = buscarProducto(item.id);
+
+      producto.stock = producto.stock - item.cantidad;
+    }
+
+    guardarProductos();
+
+    alert("Compra realizada (demo). ¡Gracias por tu compra!");
+
+    carrito = [];
+    guardarCarrito();
+
+    pintarCuadricula();
+    pintarCarrito();
+  }
+
+
+  function pintarCarrito() {
+    const lista = document.getElementById("listaCarrito");
+    const badge = document.getElementById("badgeCarrito");
+    const total = document.getElementById("totalCarrito");
+
+    lista.innerHTML = "";
+
+    let totalUnidades = 0;
+    let totalPrecio = 0;
+
+    if (carrito.length === 0) {
+      const mensaje = document.createElement("p");
+      mensaje.className =
+        "text-secondary small text-center mt-4 fw-bold";
+      mensaje.textContent = "Tu carrito está vacío";
+
+      lista.appendChild(mensaje);
+    }
+
+    for (let i = 0; i < carrito.length; i++) {
+      const item = carrito[i];
+      const producto = buscarProducto(item.id);
+
+      if (!producto) {
+        continue;
+      }
+
+      totalUnidades =
+        totalUnidades + item.cantidad;
+
+      totalPrecio =
+        totalPrecio + item.cantidad * producto.precio;
+
+      const fila = document.createElement("div");
+      fila.className =
+        "d-flex align-items-center gap-2 py-2 border-bottom border-secondary";
+
+  
+      const informacion = document.createElement("div");
+      informacion.className = "flex-grow-1";
+
+      const nombre = document.createElement("div");
+      nombre.className = "small fw-bold text-white";
+      nombre.textContent = producto.nombre;
+      informacion.appendChild(nombre);
+
+      const precio = document.createElement("div");
+      precio.className = "small text-secondary fw-semibold";
+      precio.textContent =
+        "$" + producto.precio.toLocaleString("es-CL") + " c/u";
+      informacion.appendChild(precio);
+
+      const subtotal = document.createElement("div");
+      subtotal.className = "small fw-bold";
+      subtotal.style.color = "var(--zmart-amarillo)";
+      subtotal.textContent =
+        "Subtotal: $" +
+        (producto.precio * item.cantidad).toLocaleString("es-CL");
+      informacion.appendChild(subtotal);
+
+      fila.appendChild(informacion);
+
+      
+      const controles = document.createElement("div");
+      controles.className =
+        "d-flex align-items-center gap-1";
+
+      const botonMenos = document.createElement("button");
+      botonMenos.className =
+        "btn btn-sm btn-outline-light fw-bold";
+      botonMenos.textContent = "−";
+
+      botonMenos.addEventListener("click", function () {
+        quitarUnaUnidad(producto.id);
+      });
+
+      controles.appendChild(botonMenos);
+
+      const cantidad = document.createElement("span");
+      cantidad.className = "px-2 fw-bold text-white";
+      cantidad.textContent = item.cantidad;
+
+      controles.appendChild(cantidad);
+
+      const botonMas = document.createElement("button");
+      botonMas.className =
+        "btn btn-sm btn-outline-light fw-bold";
+      botonMas.textContent = "+";
+
+      if (!puedeAgregarMas(producto)) {
+        botonMas.disabled = true;
+      }
+
+      botonMas.addEventListener("click", function () {
+        agregarAlCarrito(producto.id);
+      });
+
+      controles.appendChild(botonMas);
+      fila.appendChild(controles);
+
+  
+      const botonQuitar = document.createElement("button");
+      botonQuitar.className =
+        "btn btn-sm btn-outline-danger fw-bold";
+      botonQuitar.textContent = "X";
+
+      botonQuitar.addEventListener("click", function () {
+        quitarDelCarrito(producto.id);
+      });
+
+      fila.appendChild(botonQuitar);
+
+      lista.appendChild(fila);
+    }
+
+    badge.textContent = totalUnidades;
+    total.textContent =
+      "$" + totalPrecio.toLocaleString("es-CL");
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

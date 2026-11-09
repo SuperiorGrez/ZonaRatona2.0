@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Tema ZonaRatona con Tailwind CSS
+   ============================================================ */
+@theme {
+  --color-amarillo: #ffc600;
+  --color-amarillo-oscuro: #e6b200;
+  --color-negro: #111111;
+  --font-sans: "Rajdhani", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-negro font-sans text-[17px] text-white;
+  }
+}
+
+/* Clases reutilizables (se arman con utilidades de Tailwind) */
+@layer components {
+  .contenedor {
+    @apply mx-auto w-full max-w-7xl px-4;
+  }
+
+  .btn {
+    @apply inline-flex cursor-pointer items-center justify-center gap-1 rounded-md px-4 py-2 font-bold transition disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-sm {
+    @apply px-3 py-1 text-sm;
+  }
+  .btn-amarillo {
+    @apply bg-amarillo text-negro hover:bg-amarillo-oscuro;
+  }
+  .btn-verde {
+    @apply bg-green-600 text-white hover:bg-green-700;
+  }
+  .btn-rojo {
+    @apply bg-red-600 text-white hover:bg-red-700;
+  }
+  .btn-gris {
+    @apply bg-gray-400 text-white;
+  }
+  .btn-borde {
+    @apply border border-current bg-transparent hover:bg-black/10;
+  }
+
+  .tarjeta {
+    @apply rounded-lg bg-white text-gray-900 shadow-md;
+  }
+  .tarjeta-oscura {
+    @apply rounded-lg border border-neutral-700 bg-neutral-900/95 text-white shadow-lg;
+  }
+  .panel {
+    @apply rounded-lg bg-neutral-800 text-white shadow;
+  }
+
+  .etiqueta {
+    @apply mb-1 block text-sm font-semibold;
+  }
+  .campo {
+    @apply w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-gray-900 focus:border-amarillo focus:ring-2 focus:ring-amarillo/50 focus:outline-none disabled:bg-gray-200;
+  }
+  .campo-error {
+    @apply border-red-500;
+  }
+
+  .badge {
+    @apply inline-block rounded px-2 py-0.5 text-xs font-bold;
+  }
+
+  .titulo-pagina {
+    @apply text-3xl font-bold text-amarillo;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.85);
+  }
+  .sombra-texto {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.85);
+  }
+
+  .tabla {
+    @apply w-full text-left text-sm;
+  }
+  .tabla th {
+    @apply border-b border-gray-500/30 px-2 py-2 font-bold;
+  }
+  .tabla td {
+    @apply border-b border-gray-500/30 px-2 py-2 align-middle;
+  }
+
+  .miniatura {
+    @apply h-12 w-12 rounded bg-white object-contain;
+  }
+}
+
+.fondo-gamer {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)),
+    url("https://wallpapers.com/images/hd/video-games-zoom-background-ux0skf8nbnx9xzen.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+@media print {
+  nav, header, footer, aside, .no-imprimir, button {
+    display: none !important;
+  }
+  .fondo-gamer {
+    background: #fff !important;
+  }
+}

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión | ZonaRatona</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+      :root {
+        --zmart-amarillo: #FFC600;
+        --zmart-amarillo-oscuro: #E6B200;
+        --zmart-negro: #111111;
+      }
+      body.fondo-negro {
+        background-color: var(--zmart-negro) !important;
+        color: #f2f2f2;
+      }
+      .text-zmart {
+        color: var(--zmart-amarillo) !important;
+      }
+      .btn-primary {
+        --bs-btn-bg: var(--zmart-amarillo);
+        --bs-btn-border-color: var(--zmart-amarillo);
+        --bs-btn-color: var(--zmart-negro);
+        --bs-btn-hover-bg: var(--zmart-amarillo-oscuro);
+        --bs-btn-hover-border-color: var(--zmart-amarillo-oscuro);
+        --bs-btn-hover-color: var(--zmart-negro);
+        font-weight: 600;
+      }
+      body.fondo-gamer{
+        background-image:
+          linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)),
+          url("https://wallpapers.com/images/hd/video-games-zoom-background-ux0skf8nbnx9xzen.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+    </style>
+</head>
+<body class="fondo-gamer d-flex align-items-center justify-content-center min-vh-100">
+    <main class="container p-3" style="max-width: 420px;">
+      <div class="card border-secondary-subtle shadow-lg rounded-4" style="max-width: 400px; width: 100%; background-color: #1a1a1a;">
+          <div class="card-body p-4 p-sm-5">
+            
+            <div class="mb-4">
+              <div class="d-flex align-items-center gap-2 mb-1">
+                <i class="bi bi-controller fs-2 text-zmart"></i>
+                <h1 class="h3 fw-bold text-zmart mb-0">ZonaRatona</h1>
+              </div>
+              <p class="text-secondary small mb-0">Inicia sesión para continuar</p>
+            </div>
+            <div id="alerta" class="alert alert-danger py-2 small d-none"></div>
+
+            <form id="formLogin" novalidate>
+              <div class="mb-3">
+                <label for="usuario" class="form-label small text-secondary fw-semibold">Usuario</label>
+                <input type="text" class="form-control py-2" id="usuario" autocomplete="username" autofocus required>
+              </div>
+              <div class="mb-4">
+                <label for="clave" class="form-label small text-secondary fw-semibold">Contraseña</label>
+                <input type="password" class="form-control py-2" id="clave" autocomplete="current-password" required>
+              </div>
+              <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold" id="btnEntrar">
+                <span id="btnTexto">Entrar</span>
+              </button>
+            </form>
+
+            <hr class="my-4 border-secondary">
+            <p class="small text-secondary mb-0">
+              Cuentas de prueba:<br>
+              <code>admin / Admin123</code> — administrador<br>
+              <code>lvial / User123</code> — usuario
+            </p>
+
+          </div>
+        </div>
+    </main>
+
+<script>
+const SEED_USUARIOS = [
+  { id:1, usuario:"admin",  nombre:"Fabian Grez",    email:"fabian@correo.cl",  clave:"Admin123", rol:"admin", activo:true  },
+  { id:2, usuario:"lvial", nombre:"Lucas Gajardo",   email:"lucas@correo.cl", clave:"User123",  rol:"user",  activo:true  }
+];
+
+const KEY_SESION   = "inv_sesion";
+const KEY_INTENTOS = "inv_intentos";
+const MAX_INTENTOS = 5;
+const BLOQUEO_MS   = 60000;
+
+const formLogin  = document.getElementById("formLogin");
+const inpUsuario = document.getElementById("usuario");
+const inpClave   = document.getElementById("clave");
+const alerta     = document.getElementById("alerta");
+
+if (sessionStorage.getItem(KEY_SESION)) {
+  window.location.href = "index.html";
+}
+
+inpUsuario.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault(); 
+    if (!inpUsuario.value.trim()) {
+      mostrarError("Por favor, ingresa tu usuario.");
+    } else {
+      ocultarError();
+      inpClave.focus();
+    }
+  }
+});
+
+formLogin.addEventListener("submit", (e) => {
+  e.preventDefault();
+  ocultarError();
+
+  const espera = bloqueoRestante();
+  if (espera > 0) {
+    mostrarError("Demasiados intentos fallidos. Espera " + espera + " segundos.");
+    return;
+  }
+
+  const usuario = inpUsuario.value.trim();
+  const clave   = inpClave.value;
+
+  if (!usuario || !clave) {
+    mostrarError("Escribe tu usuario y tu contraseña.");
+    return;
+  }
+
+  const encontrado = SEED_USUARIOS.find(u => u.usuario.toLowerCase() === usuario.toLowerCase() && u.clave === clave);
+
+  if (!encontrado) {
+    const resultado = registrarFallo();
+    if (resultado.bloqueado) {
+      mostrarError("Demasiados intentos fallidos. Espera " + Math.ceil(BLOQUEO_MS / 1000) + " segundos.");
+    } else if (resultado.restantes <= 2) {
+      mostrarError("Usuario o contraseña incorrectos. Te queda" + (resultado.restantes === 1 ? "" : "n") + " " + resultado.restantes + " intento" + (resultado.restantes === 1 ? "" : "s") + ".");
+    } else {
+      mostrarError("Usuario o contraseña incorrectos.");
+    }
+    inpClave.value = "";
+    return;
+  }
+
+  if (!encontrado.activo) {
+    mostrarError("Tu cuenta está desactivada.");
+    return;
+  }
+
+  localStorage.removeItem(KEY_INTENTOS);
+  sessionStorage.setItem(KEY_SESION, JSON.stringify({
+    id:      encontrado.id,
+    usuario: encontrado.usuario,
+    nombre:  encontrado.nombre,
+    rol:     encontrado.rol,
+    expire:  Date.now() + 30 * 60 * 1000
+  }));
+
+  window.location.href = "index.html";
+});
+
+function mostrarError(msg) {
+  alerta.textContent = msg;
+  alerta.classList.remove("d-none");
+}
+
+function ocultarError() {
+  alerta.classList.add("d-none");
+  alerta.textContent = "";
+}
+
+function bloqueoRestante() {
+  const d = JSON.parse(localStorage.getItem(KEY_INTENTOS) || '{"n":0,"hasta":0}');
+  return d.hasta > Date.now() ? Math.ceil((d.hasta - Date.now()) / 1000) : 0;
+}
+
+function registrarFallo() {
+  const d = JSON.parse(localStorage.getItem(KEY_INTENTOS) || '{"n":0,"hasta":0}');
+  d.n++;
+  const restantes = Math.max(MAX_INTENTOS - d.n, 0);
+  let bloqueado = false;
+  if (d.n >= MAX_INTENTOS) {
+    d.hasta = Date.now() + BLOQUEO_MS;
+    d.n = 0;
+    bloqueado = true;
+  }
+  localStorage.setItem(KEY_INTENTOS, JSON.stringify(d));
+  return { bloqueado: bloqueado, restantes: restantes };
+}
+</script>
+</body>
+</html>

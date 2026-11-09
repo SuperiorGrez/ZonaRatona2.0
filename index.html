@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ZonaRatona | Inicio</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
+  <style>
+    :root{
+      --zmart-amarillo: #FFC600;
+      --zmart-amarillo-oscuro: #E6B200;
+      --zmart-amarillo-claro: #FFC600;
+      --zmart-negro: #111111;
+    }
+
+    body {
+      font-family: 'Rajdhani', sans-serif;
+    }
+
+    body.fondo-gamer{
+        background-image:
+          linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)),
+          url("https://wallpapers.com/images/hd/video-games-zoom-background-ux0skf8nbnx9xzen.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+
+    .navbar-zmart {
+      background-color: var(--zmart-negro) !important;
+      border-bottom: 3px solid var(--zmart-amarillo);
+    }
+    .navbar-zmart .navbar-brand {
+      color: var(--zmart-amarillo) !important;
+      font-weight: 700;
+      letter-spacing: .5px;
+    }
+    .nav-link.active {
+      color: var(--zmart-amarillo-claro) !important;
+      font-weight: 700;
+      text-shadow: 0 0 8px rgba(255, 230, 102, 0.4);
+    }
+
+    .btn-primary {
+      --bs-btn-bg: var(--zmart-amarillo);
+      --bs-btn-border-color: var(--zmart-amarillo);
+      --bs-btn-color: var(--zmart-negro);
+      --bs-btn-hover-bg: var(--zmart-amarillo-oscuro);
+      --bs-btn-hover-border-color: var(--zmart-amarillo-oscuro);
+      --bs-btn-hover-color: var(--zmart-negro);
+      font-weight: 700;
+    }
+
+    .carousel-img-wrapper {
+      height: 180px;
+      background-color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px 8px 0 0;
+      padding: 10px;
+    }
+    .carousel-img-wrapper img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+    }
+    
+    .tarjeta-carrusel {
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .tarjeta-carrusel:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.5) !important;
+    }
+  </style>
+</head>
+<body class="fondo-gamer d-flex flex-column min-vh-100">
+
+  <nav class="navbar navbar-expand-lg navbar-zmart sticky-top">
+    <div class="container">
+      <a class="navbar-brand fs-4" href="index.html">
+        <i class="bi bi-controller me-2"></i>ZonaRatona
+      </a>
+
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white fw-semibold" href="productos.html">Ir al Catálogo</a>
+          </li>
+        </ul>
+
+        <div class="d-flex align-items-center gap-3" id="bloqueUsuario">
+        </div>
+      </div>
+    </div>
+  </nav>
+  <header class="p-5 mb-2 text-center">
+    <div class="container py-4">
+      <h1 class="display-4 fw-bold" style="color: var(--zmart-amarillo); text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">¡ Bienvenid@ a ZonaRatona !</h1>
+      <p class="col-md-8 fs-5 mx-auto text-white mb-0" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.8);">
+        Adquiere tus consolas y juegos favoritos al mejor precio.
+      </p>
+    </div>
+  </header>
+
+  <main class="container mb-5 flex-grow-1">
+  
+    <div id="panelEstadisticas" class="d-none mb-5">
+      <h2 class="h4 mb-3 border-bottom pb-2 text-white">Resumen de Inventario <span class="badge bg-danger small ms-2 fs-6">Modo Admin</span></h2>
+      <div class="row g-3">
+        <div class="col-md-4">
+          <div class="card h-100 bg-white border-0 shadow-sm text-dark">
+            <div class="card-body text-center">
+              <h3 class="h6 card-title text-secondary fw-bold">Total Registrados</h3>
+              <p class="display-5 mb-0 fw-bold" style="color: var(--zmart-amarillo-oscuro);" id="statTotal">—</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 bg-white border-0 shadow-sm text-dark">
+            <div class="card-body text-center">
+              <h3 class="h6 card-title text-secondary fw-bold">Productos Activos</h3>
+              <p class="display-5 mb-0 fw-bold text-success" id="statActivos">—</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 bg-white border-0 shadow-sm text-dark">
+            <div class="card-body text-center">
+              <h3 class="h6 card-title text-secondary fw-bold">Sin Stock (Agotados)</h3>
+              <p class="display-5 mb-0 fw-bold text-danger" id="statSinStock">—</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="h3 mb-4 text-center text-white fw-bold" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.8);">Productos Destacados</h2>
+    
+    <div id="carruselProductos" class="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+      <div class="carousel-inner" id="contenedorCarrusel">
+      </div>
+      
+      <button class="carousel-control-prev w-auto" style="left: -40px;" type="button" data-bs-target="#carruselProductos" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bg-dark rounded-circle p-3 shadow" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+      </button>
+      <button class="carousel-control-next w-auto" style="right: -40px;" type="button" data-bs-target="#carruselProductos" data-bs-slide="next">
+        <span class="carousel-control-next-icon bg-dark rounded-circle p-3 shadow" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+      </button>
+    </div>
+    <div class="text-center mt-5">
+      <a href="productos.html" class="btn btn-primary btn-lg px-5 shadow fw-bold text-dark">
+        <i class="bi bi-fire me-2"></i>Ver todo el catálogo
+      </a>
+    </div>
+
+  </main>
+
+  <footer class="bg-dark border-top border-secondary-subtle py-4 mt-auto">
+    <div class="container text-center text-secondary small fw-semibold">
+      <p class="mb-1">© 2026 ZonaRatona SpA — Venta de videjuegos y consolas.</p>
+      <p class="mb-0">Proyecto formativo de desarrollo Web.</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const SEED_PRODUCTOS = [
+      {id:1, codigo:"PS-001", nombre:"PlayStation 5 Slim", categoria:"Consolas", precio:749990, stock:5, activo:true, imagen: "https://www.weplay.cl/pub/media/catalog/product/cache/3f1b140c3c9f36fbf6b01dffb521c246/4/9/49488724159340.jpeg"},
+      {id:2, codigo:"XB-001", nombre:"Xbox Series X", categoria:"Consolas", precio:669990, stock:6, activo:true, imagen: "https://i5.walmartimages.com/seo/Microsoft-Xbox-Series-X-1TB-SSD-Gaming-Console_7731b7a3-2b2c-4cdd-b79a-56958896fc7c.7579fef99ebf8da06c02e6a2ecb62f4f.jpeg"},
+      {id:3, codigo:"PS-002", nombre:"PlayStation 4 Slim 1 TB", categoria:"Consolas", precio:329990, stock:4, activo:true, imagen: "https://assets.pcfactory.cl/public/foto/31328/2_500.jpg"},
+      {id:4, codigo:"XB-002", nombre:"Xbox One", categoria:"Consolas", precio:199990, stock:2, activo:true, imagen: "https://assets.pcfactory.cl/public/foto/27096/1_500.jpg"},
+      {id:5, codigo:"NS-001", nombre:"Nintendo Switch", categoria:"Consolas", precio:299990, stock:5, activo:true, imagen: "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcS5Mp6R1QkKQu2T3vpjAKv5_8j4zk8NQUJ_NG2i0j_qPVX-LVTByKnIaT-lCz0HccrWku744lTJk6QgkCyY-nLa-VuhSXb4YmdolzVhjk1N2xboDpOOGbWfiXA"},
+      {id:6, codigo:"NS2-001", nombre:"Nintendo Switch 2", categoria:"Consolas", precio:629990, stock:5, activo:true, imagen: "https://www.weplay.cl/pub/media/catalog/product/cache/3f1b140c3c9f36fbf6b01dffb521c246/1/_/1_1745414561000.jpg"},
+      {id:7, codigo:"PS5-001", nombre:"Astro Bot", categoria:"PlayStation 5", precio:69990, stock:0, activo:true, imagen: "https://i5.walmartimages.cl/asr/3613f1ca-5850-4706-81a1-2a2ae64556d6.a611ee2af1d1b79dea0072e6d2082036.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF"},
+      {id:8, codigo:"PS5-002", nombre:"Stellar Blade", categoria:"PlayStation 5", precio:69990, stock:9, activo:true, imagen: "https://clsonyb2c.vtexassets.com/arquivos/ids/463769/ps5-STELLAR-BLADE-packshot-2.jpg?v=638948488303730000"},
+      {id:9, codigo:"PS5-003", nombre:"Death Stranding 2: On the Beach", categoria:"PlayStation 5", precio:79990, stock:9, activo:true, imagen: "https://clsonyb2c.vtexassets.com/arquivos/ids/467668/PS5-Death-Stranding-2-2.jpg?v=638859136791230000"},
+      {id:10, codigo:"PS5-004", nombre:"God of War Ragnarok", categoria:"PlayStation 5", precio:59990, stock:14, activo:true, imagen: "https://media.falabella.com/falabellaCL/16570989_2/w=1200,h=1400,fit=cover"},
+      {id:11, codigo:"PS5-005", nombre:"Final Fantasy VII Rebirth", categoria:"PlayStation 5", precio:69990, stock:11, activo:true, imagen: "https://http2.mlstatic.com/D_NQ_NP_644247-MLA92112450946_092025-O-final-fantasy-vii-rebirth-ps5-fisico.webp"},
+      {id:12, codigo:"PS4-001", nombre:"Resident Evil 4", categoria:"PlayStation 4", precio:39990, stock:9, activo:true, imagen: "https://http2.mlstatic.com/D_NQ_NP_718660-MLA99509627130_112025-O.webp"},
+      {id:13, codigo:"PS4-002", nombre:"Persona 5 Royal", categoria:"PlayStation 4", precio:29990, stock:7, activo:true, imagen: "https://http2.mlstatic.com/D_NQ_NP_827924-MLA112166427728_062026-O.webp"},
+      {id:14, codigo:"PS4-003", nombre:"The Witcher 3: Wild Hunt", categoria:"PlayStation 4", precio:29990, stock:12, activo:true, imagen: "https://http2.mlstatic.com/D_NQ_NP_634099-MLA99944984211_112025-O.webp"},
+      {id:15, codigo:"PS4-004", nombre:"God of War", categoria:"PlayStation 4", precio:39990, stock:6, activo:true, imagen: "https://http2.mlstatic.com/D_Q_NP_2X_806222-MLA100000148187_112025-P.webp"},
+      {id:16, codigo:"PS4-005", nombre:"Sekiro: Shadows Die Twice", categoria:"PlayStation 4", precio:44990, stock:5, activo:true, imagen: "https://http2.mlstatic.com/D_NQ_NP_783138-CBT112456917803_052026-O.webp"},
+      {id:17, codigo:"NS2-002", nombre:"Mario Kart World", categoria:"Nintendo Switch 2", precio:89990, stock:9, activo:true, imagen: "https://www.weplay.cl/pub/media/catalog/product/cache/3f1b140c3c9f36fbf6b01dffb521c246/0/4/0454969054538.jpeg"},
+      {id:18, codigo:"NS2-003", nombre:"Donkey Kong Bananza", categoria:"Nintendo Switch 2", precio:72990, stock:0, activo:true, imagen: "https://www.weplay.cl/pub/media/catalog/product/cache/3f1b140c3c9f36fbf6b01dffb521c246/0/4/045496905576-00.jpg"},
+      {id:19, codigo:"NS2-004", nombre:"Cyberpunk 2077: Ultimate Edition", categoria:"Nintendo Switch 2", precio:69990, stock:6, activo:true, imagen: "https://media.falabella.com/falabellaCL/144628795_01/w=1004,h=1500,fit=pad"},
+      {id:20, codigo:"NS2-005", nombre:"Hogwarts Legacy - Switch 2 Edition", categoria:"Nintendo Switch 2", precio:59990, stock:8, activo:true, imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRj73At05bYckHuJCOoeRidVqwdMEDRsfzwBa_ipNUWsn747TC9vIU6oeg&s=10"},
+      {id:21, codigo:"NS2-006", nombre:"The Legend of Zelda: Breath of the Wild - Switch 2 Edition", categoria:"Nintendo Switch 2", precio:89990, stock:7, activo:true, imagen: "https://www.weplay.cl/pub/media/catalog/product/cache/3f1b140c3c9f36fbf6b01dffb521c246/0/4/0454969057746.jpeg"},
+      {id:22, codigo:"NS-002", nombre:"The Legend of Zelda: Tears of the Kingdom", categoria:"Nintendo Switch", precio:69990, stock:9, activo:true, imagen: "https://http2.mlstatic.com/D_NQ_NP_902828-MLA99452754962_112025-O.webp"},
+      {id:23, codigo:"NS-003", nombre:"Super Mario Bros. Wonder", categoria:"Nintendo Switch", precio:59990, stock:10, activo:true, imagen: "https://i5.walmartimages.cl/asr/8d62e5f6-3f4b-42e3-baf6-1373f7382f58.717214b0c3bcaee35c73da7123666b86.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF"},
+      {id:24, codigo:"NS-004", nombre:"Metroid Prime Remastered", categoria:"Nintendo Switch", precio:54990, stock:7, activo:true, imagen: "https://rimage.ripley.cl/home.ripley/Attachment/MKP/4354/MPM10003087066/full_image-1"},
+      {id:25, codigo:"NS-005", nombre:"Xenoblade Chronicles 3", categoria:"Nintendo Switch", precio:59990, stock:6, activo:true, imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmHy9dYZ1j2C8Zppay886EQ-clV-CIsf-bULI-H-P9rSjxxtX1Ni7nLpw&s=10"},
+      {id:26, codigo:"NS-006", nombre:"Luigi's Mansion 3", categoria:"Nintendo Switch", precio:59990, stock:8, activo:true, imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6X1GX6pSiORoPEnf_0GXLp7E6P2DqAJgldB_qVBZf0Z7xrBBTupJXRQw_&s=10"},
+      {id:27, codigo:"XB1-001", nombre:"Red Dead Redemption 2", categoria:"Xbox One", precio:29990, stock:9, activo:true, imagen: "https://media.falabella.com/falabellaCL/112637354_01/w=800,h=800,fit=pad"},
+      {id:28, codigo:"XB1-002", nombre:"Resident Evil 2", categoria:"Xbox One", precio:29990, stock:7, activo:true, imagen: "https://http2.mlstatic.com/D_NQ_NP_913835-MLA99930564331_112025-O.webp"},
+      {id:29, codigo:"XB1-003", nombre:"Middle-earth: Shadow of War", categoria:"Xbox One", precio:24990, stock:8, activo:true, imagen: "https://cashatmaxx.co.uk/cdn/shop/files/Untitled_8689858a-5073-42d3-8d4b-74d01cdb1c0c.png?v=1725979691"},
+      {id:30, codigo:"XB1-004", nombre:"Killer Instinct: Definitive Edition", categoria:"Xbox One", precio:29990, stock:5, activo:true, imagen: "https://http2.mlstatic.com/D_NQ_NP_669530-MLC31878814679_082019-O.webp"},
+      {id:31, codigo:"XB1-005", nombre:"Quantum Break", categoria:"Xbox One", precio:19990, stock:6, activo:true, imagen: "https://images.kabum.com.br/produtos/fotos/sync_mirakl/390593/xlarge/Game-Microsoft-Xbox-One-Quantum-Break_1738690341.jpg"},
+      {id:32, codigo:"XBS-001", nombre:"Indiana Jones and the Great Circle", categoria:"Xbox Series S/X", precio:69990, stock:9, activo:true, imagen: "https://http2.mlstatic.com/D_NQ_NP_786133-CBT113311906107_062026-O.webp"},
+      {id:33, codigo:"XBS-002", nombre:"Starfield", categoria:"Xbox Series S/X", precio:59990, stock:7, activo:true, imagen: "https://i5.walmartimages.cl/asr/444d8232-2b3f-48a8-b765-4bedc88cedd6.2f06d0ade5c1a76ebfc92d350b00c496.jpeg"},
+      {id:34, codigo:"XBS-003", nombre:"Alan Wake 2", categoria:"Xbox Series S/X", precio:59990, stock:8, activo:true, imagen: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqZ8-yBCcy-vofvdae5BdNvYHQ6M9zmX9T8jYwNuNqMw&s=10"},
+      {id:35, codigo:"XBS-004", nombre:"Forza Motorsport", categoria:"Xbox Series S/X", precio:49990, stock:6, activo:true, imagen: "https://media.spdigital.cl/thumbnails/products/ed7kdhfu_77ce63a0_thumbnail_4096.png"},
+      {id:36, codigo:"XBS-005", nombre:"DOOM: The Dark Ages", categoria:"Xbox Series S/X", precio:69990, stock:10, activo:true, imagen: "https://http2.mlstatic.com/D_NQ_NP_828922-CBT91089005957_082025-O.webp" }
+    ];
+
+    const KEY_SESION = "inv_sesion";
+    const KEY_PRODUCTOS = "inv_productos";
+
+    document.addEventListener("DOMContentLoaded", () => {
+      cargarEstadoSesion();
+      renderizarCarrusel();
+    });
+
+    window.addEventListener("pageshow", (e) => {
+      if (e.persisted) {
+        cargarEstadoSesion();
+        renderizarCarrusel();
+      }
+    });
+
+    window.addEventListener("storage", (e) => {
+      if (e.key === KEY_PRODUCTOS) {
+        cargarEstadoSesion();
+        renderizarCarrusel();
+      }
+    });
+
+    function cargarEstadoSesion() {
+      const bloqueUsuario = document.getElementById("bloqueUsuario");
+      let sesion = null;
+
+      try {
+        sesion = JSON.parse(sessionStorage.getItem(KEY_SESION));
+        if (sesion && sesion.expire && Date.now() > sesion.expire) {
+          sessionStorage.removeItem(KEY_SESION);
+          sesion = null;
+        }
+      } catch (e) {
+        sesion = null;
+      }
+
+      if (sesion) {
+        bloqueUsuario.innerHTML = `
+          <span class="text-light small d-none d-md-block fw-semibold">Hola, <b style="color:var(--zmart-amarillo);">${sesion.usuario}</b></span>
+          <button class="btn btn-danger btn-sm text-white fw-bold" onclick="cerrarSesion()">Cerrar sesión</button>
+        `;
+
+        if (sesion.rol === "admin") {
+          document.getElementById("panelEstadisticas").classList.remove("d-none");
+          calcularEstadisticas();
+        }
+      } else {
+        bloqueUsuario.innerHTML = `
+          <a href="login.html" class="btn btn-primary btn-sm px-3 fw-bold text-dark">
+            <i class="bi bi-person me-1"></i>Ingresar
+          </a>
+        `;
+      }
+    }
+
+    function cerrarSesion() {
+      sessionStorage.removeItem(KEY_SESION);
+      window.location.reload();
+    }
+
+    function obtenerProductos() {
+      const guardados = localStorage.getItem(KEY_PRODUCTOS);
+      if (guardados) {
+        try {
+          return JSON.parse(guardados);
+        } catch (e) {}
+      }
+      localStorage.setItem(KEY_PRODUCTOS, JSON.stringify(SEED_PRODUCTOS));
+      return SEED_PRODUCTOS;
+    }
+
+    function calcularEstadisticas() {
+      const productos = obtenerProductos();
+      const activos = productos.filter(p => p.stock > 0).length;
+      const sinStock = productos.filter(p => p.stock <= 0).length;
+
+      document.getElementById("statTotal").textContent = productos.length;
+      document.getElementById("statActivos").textContent = activos;
+      document.getElementById("statSinStock").textContent = sinStock;
+    }
+
+    function renderizarCarrusel() {
+      const contenedor = document.getElementById("contenedorCarrusel");
+      let productos = obtenerProductos();
+      
+      productos = productos.filter(p => p.activo && p.stock > 0);
+      const seleccionados = productos.sort(() => 0.5 - Math.random()).slice(0, 12);
+
+      let htmlCarrusel = "";
+
+      for (let i = 0; i < seleccionados.length; i += 4) {
+        const item1 = seleccionados[i];
+        const item2 = seleccionados[i + 1];
+        const item3 = seleccionados[i + 2];
+        const item4 = seleccionados[i + 3];
+        
+        const claseActiva = i === 0 ? "active" : "";
+
+        const t1 = item1 ? crearTarjetaHTML(item1) : `<div class="col-3"></div>`;
+        const t2 = item2 ? crearTarjetaHTML(item2) : `<div class="col-3"></div>`;
+        const t3 = item3 ? crearTarjetaHTML(item3) : `<div class="col-3"></div>`;
+        const t4 = item4 ? crearTarjetaHTML(item4) : `<div class="col-3"></div>`;
+
+        htmlCarrusel += `
+          <div class="carousel-item ${claseActiva}">
+            <div class="row row-cols-2 row-cols-md-4 g-3 justify-content-center px-4">
+              ${t1}
+              ${t2}
+              ${t3}
+              ${t4}
+            </div>
+          </div>
+        `;
+      }
+
+      contenedor.innerHTML = htmlCarrusel;
+    }
+
+    function crearTarjetaHTML(p) {
+      const imagen = p.imagen && p.imagen.trim() !== "" ? p.imagen : `https://placehold.co/400x250/ffffff/000000?text=${encodeURIComponent(p.codigo)}`;
+      
+      return `
+        <div class="col">
+          <a href="productos.html?buscar=${p.codigo}" class="text-decoration-none">
+            <div class="card h-100 bg-white border-0 shadow-sm tarjeta-carrusel text-dark">
+              <div class="carousel-img-wrapper" style="background-color: #fff;">
+                <img src="${imagen}" alt="${p.nombre}">
+              </div>
+              <div class="card-body text-start d-flex flex-column p-3">
+                <div class="text-secondary small mb-1 fw-semibold" style="font-size:0.8rem;">${p.codigo}</div>
+                <h5 class="card-title mb-1 text-truncate fw-bold" style="font-size:1.1rem;">${p.nombre}</h5>
+                <span class="badge text-bg-light border border-secondary mb-2 align-self-start text-dark" style="font-size:0.75rem;">${p.categoria}</span>
+                <div class="fw-bold fs-4 mb-0 text-dark">$${p.precio.toLocaleString("es-CL")}</div>
+                <div class="small text-secondary mb-3 fw-semibold" style="font-size: 0.8rem;">Stock: ${p.stock} · ${p.stock > 0 ? 'Disponible' : 'No disponible'}</div>
+                <div class="mt-auto">
+                  <button class="btn btn-primary w-100 fw-bold text-dark">Agregar al carrito</button>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
